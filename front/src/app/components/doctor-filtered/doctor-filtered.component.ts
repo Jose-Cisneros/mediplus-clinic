@@ -9,11 +9,15 @@ import { Observable } from 'rxjs';
 export class DoctorFilteredComponent implements OnInit {
 
   @Input() doctor: any;
+  showRequestComponent = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-}
+  requestAppointment() {
+    this.showRequestComponent = true;
+  }
 
+}

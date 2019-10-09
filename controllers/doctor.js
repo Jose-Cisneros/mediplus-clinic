@@ -29,6 +29,12 @@ router.get('/specialist/:specialistName',(req,res) => {
     })
 });
 
+
+router.post('/request-appointment', (req,res,next) => {
+    console.log(req.body);
+    res.json({success: true, message: 'turno solicitado'});
+})
+
 //POST HTTP method to /doctors
 
 router.post('/', (req,res,next) => {
