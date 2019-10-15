@@ -17,7 +17,7 @@ const initialState = {
 type ActionsType =
   | PatientViewActionsUnion;
 
-export function reducer( state = initialState, action: ActionsType) : State {
+export function reducer( state = initialState, action: ActionsType): State {
   switch (action.type) {
     case PatientViewActionTypes.Home: {
       return {

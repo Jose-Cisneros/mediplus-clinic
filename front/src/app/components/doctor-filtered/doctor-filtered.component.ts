@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs';
+import * as fromPatientVIewState from '../../containers/reducers/index';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-doctor-filtered',
@@ -11,13 +14,15 @@ export class DoctorFilteredComponent implements OnInit {
   @Input() doctor: any;
   showRequestComponent = false;
 
-  constructor() { }
+  constructor(
+    private patientViewStore: Store<fromPatientVIewState.State>
+  ) { }
 
   ngOnInit() {
   }
 
   requestAppointment() {
-    this.showRequestComponent = true;
+    this.patientViewStore.dispatch(new PatientViewActions.RequestAppointment);
   }
 
 }
