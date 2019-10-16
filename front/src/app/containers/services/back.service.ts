@@ -17,4 +17,13 @@ export class BackService {
     return this.httpClient.get('/doctors/specialist/' + speciality);
   }
 
+  postAppointment(doctorId: string, patientId: string, date: string, hour: string): Observable<any> {
+    return this.httpClient.post('/doctors/request-appointment', {
+      doctor_id: doctorId,
+      patient_id: patientId,
+      date: date,
+      hour: hour
+    });
+  }
+
 }

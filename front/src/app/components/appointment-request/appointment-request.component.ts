@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { BackService } from 'src/app/containers/services/back.service';
+import { Doctor } from 'src/app/Models/doctor';
 
 
 
@@ -12,9 +14,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppointmentRequestComponent implements OnInit {
 
-  @Input() doctor: any;
+  @Input() doctor: Doctor;
   date: string;
-  constructor(private http: HttpClient) {
+
+  constructor(private backService: BackService) {
 
   }
 
@@ -24,7 +27,7 @@ export class AppointmentRequestComponent implements OnInit {
 
   onSubmit() {
 
-    this.http.post<any>('/doctors/request-appointment', {_id: this.doctor._id, date: this.date }).subscribe(
+    this.backService.postAppointment(this.doctor.id, '5da775b0e4d594146bf56599', this.date, '10:00').subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
