@@ -20,8 +20,9 @@ import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-fil
 import { AppointmentRequestComponent } from './components/appointment-request/appointment-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { BackService } from './containers/services/back.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -45,10 +46,13 @@ import { BackService } from './containers/services/back.service';
     EffectsModule.forRoot([]),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
 
   ],
   providers: [BackService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AppointmentRequestComponent],
 })
 export class AppModule { }

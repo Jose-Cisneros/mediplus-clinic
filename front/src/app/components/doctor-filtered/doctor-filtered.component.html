@@ -1,7 +1,7 @@
 <span>Dr. {{doctor.firstName}}</span>
 <span> {{doctor.lastName}}   </span>
-<button (click)="requestAppointment()">Solicitar turno</button>
+<button (click)="openDialog()">Solicitar turno</button>
 
-<app-appointment-request *ngIf="showRequestComponent" [doctor]="doctor"></app-appointment-request>
+<!-- <app-appointment-request *ngIf="showRequestComponent" [doctor]="doctor"></app-appointment-request> -->
 
 
