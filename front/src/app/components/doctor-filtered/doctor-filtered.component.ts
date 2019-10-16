@@ -3,9 +3,10 @@ import { Observable } from 'rxjs';
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import { Store } from '@ngrx/store';
-import {MatDialog} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppointmentRequestComponent } from '../appointment-request/appointment-request.component';
 import { Doctor } from 'src/app/Models/doctor';
+import { stringify } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-doctor-filtered',
@@ -23,14 +24,11 @@ export class DoctorFilteredComponent implements OnInit {
   ngOnInit() {
     this.showRequestComponent = false;
   }
-
-  // requestAppointment() {
-  //   this.showRequestComponent = true;
-  // }
-
   requestAppointment(): void {
     const dialogRef = this.dialog.open(AppointmentRequestComponent, {
-      width: '1000px',
+      data: {
+        doctor: this.doctor,
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
