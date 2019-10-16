@@ -35,9 +35,9 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   onSelectedSpecialist = (specialistName: string): void => {
 
-    this.backService.getAllDoctors().subscribe((doctors) => {
-      this.doctorsBySpecialist = doctors;
-    });
+    // this.backService.getAllDoctors().subscribe((doctors) => {
+    //   this.doctorsBySpecialist = doctors;
+    // });
 
     this.doctorsBySpecialist = this.http.get('/doctors/specialist/' + specialistName);
     this.specialistSelected = specialistName;

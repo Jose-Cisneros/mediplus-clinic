@@ -12,11 +12,12 @@ import { Store } from '@ngrx/store';
 export class DoctorFilteredComponent implements OnInit {
 
   @Input() doctor: any;
-  showRequestComponent = false;
+  showRequestComponent: boolean;
 
   constructor(  ) { }
 
   ngOnInit() {
+    this.showRequestComponent = false;
   }
 
   requestAppointment() {
