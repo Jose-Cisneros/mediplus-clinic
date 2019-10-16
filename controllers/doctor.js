@@ -9,8 +9,9 @@ const api_helper = require('./api_helper')
 
 
 //GET HTTP method to /pacientes
-router.get('/all',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/all')
+router.get('/specialist/:specialistName',(req,res) => {
+    let specialistName = req.params.specialistName;
+    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/speciality/' + specialistName)
     .then(response => {
         res.json(response)
     })

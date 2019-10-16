@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
-import * as DoctorsFilteresActions from '../../containers/actions/doctors-filtered.actions';
 import { Observable } from 'rxjs';
 import { BackService } from 'src/app/containers/services/back.service';
+import { Doctor } from 'src/app/Models/doctor';
+import { DoctorResponse } from 'src/app/Responses/Doctors.response';
 
 @Component({
   selector: 'app-patient-select-specialist',
@@ -16,8 +17,7 @@ import { BackService } from 'src/app/containers/services/back.service';
 export class PatientSelectSpecialistComponent implements OnInit {
 
   specialistSelected = '';
-  doctorsFilteredState$: Observable<fromPatientVIewState.State>;
-  doctorsBySpecialist: any;
+  doctorsBySpecialist: Doctor[] = [];
 
 
   specialistArray = ['Traumatologo', 'Cirujano', 'Pediatra', 'Kinesiologo'];
@@ -28,30 +28,23 @@ export class PatientSelectSpecialistComponent implements OnInit {
   ngOnInit() {
 
   }
-
   goToHome = () => {
     this.patientViewStore.dispatch(new PatientViewActions.Home);
   }
 
   onSelectedSpecialist = (specialistName: string): void => {
 
-    // this.backService.getAllDoctors().subscribe((doctors) => {
-    //   this.doctorsBySpecialist = doctors;
-    // });
+    this.backService.getBySpeciality(specialistName).subscribe((doctors) => {
+      doctors.forEach((doc: DoctorResponse) => {
+        this.doctorsBySpecialist.push(new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality ))
+      });
+    });
 
-    this.doctorsBySpecialist = this.http.get('/doctors/specialist/' + specialistName);
+    console.log(this.doctorsBySpecialist);
+    // this.doctorsBySpecialist = this.http.get('/doctors/specialist/' + specialistName);
+    // this.specialistSelected = specialistName;
+
     this.specialistSelected = specialistName;
-
-    this.specialistSelected = specialistName;
-
-    // NO BORRAR CODIGO COMENTADO.
-
-    // this.patientViewStore.dispatch(new DoctorsFilteresActions.GetDoctorsFiltered());
-
-    // this.patientViewStore.pipe(select(fromPatientVIewState.getDoctorsFilteredStatus));
-    // this.patientViewStore.subscribe((data) => {
-    //   console.log(data.doctorsFiltered.doctorsFilteredStatus.data);
-    // })
   }
 
 }

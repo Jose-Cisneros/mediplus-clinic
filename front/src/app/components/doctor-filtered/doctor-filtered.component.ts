@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import { Store } from '@ngrx/store';
+import { Doctor } from 'src/app/Models/doctor';
 
 @Component({
   selector: 'app-doctor-filtered',
@@ -11,7 +12,7 @@ import { Store } from '@ngrx/store';
 })
 export class DoctorFilteredComponent implements OnInit {
 
-  @Input() doctor: any;
+  @Input() doctor: Doctor;
   showRequestComponent: boolean;
 
   constructor(  ) { }
