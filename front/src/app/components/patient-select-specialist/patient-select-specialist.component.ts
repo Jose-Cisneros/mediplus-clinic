@@ -6,6 +6,7 @@ import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import * as DoctorsFilteresActions from '../../containers/actions/doctors-filtered.actions';
 import { Observable } from 'rxjs';
+import { BackService } from 'src/app/containers/services/back.service';
 
 @Component({
   selector: 'app-patient-select-specialist',
@@ -16,13 +17,12 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   specialistSelected = '';
   doctorsFilteredState$: Observable<fromPatientVIewState.State>;
-  doctorsBySpecialist: Observable<any>;
+  doctorsBySpecialist: any;
 
 
   specialistArray = ['Traumatologo', 'Cirujano', 'Pediatra', 'Kinesiologo'];
-  constructor(
-    private http: HttpClient,
-    private patientViewStore: Store<fromPatientVIewState.State>
+  constructor( private backService: BackService, private http: HttpClient,
+     private patientViewStore: Store<fromPatientVIewState.State>
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,13 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   onSelectedSpecialist = (specialistName: string): void => {
 
+    this.backService.getAllDoctors().subscribe((doctors) => {
+      this.doctorsBySpecialist = doctors;
+    });
+
     this.doctorsBySpecialist = this.http.get('/doctors/specialist/' + specialistName);
+    this.specialistSelected = specialistName;
+
     this.specialistSelected = specialistName;
 
     // NO BORRAR CODIGO COMENTADO.

@@ -3,21 +3,24 @@ const router = express.Router();
 const Doctor = require('../models/doctor');
 const appointmentsList = require('../models/appointments');
 const PersonModel = require('../models/person');
+const http = require('http');
+const https = require('https');
+const api_helper = require('./api_helper')
+
 
 //GET HTTP method to /pacientes
-router.get('/',(req,res) => {
-    Doctor.getAllLists((err, lists) => {
-        if (err) {
-            res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
-        } else {
-            res.write(JSON.stringify({success: true, lists:lists},null,2));
-            res.end();
-        }
+router.get('/all',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/all')
+    .then(response => {
+        res.json(response)
     })
+    .catch(error => {
+        res.send(error)
+    });
 });
 
 router.get('/specialist/:specialistName',(req,res) => {
-//    let specialist = req.body.specialist;
+// let specialist = req.body.specialist;
     console.log(req.params.specialistName); 
     Doctor.find({gender:'Man'}, (err, lists) => {
         if (err) {

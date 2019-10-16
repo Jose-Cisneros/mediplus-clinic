@@ -21,6 +21,8 @@ import { AppointmentRequestComponent } from './components/appointment-request/ap
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { BackService } from './containers/services/back.service';
+
 
 
 
@@ -46,7 +48,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [BackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
