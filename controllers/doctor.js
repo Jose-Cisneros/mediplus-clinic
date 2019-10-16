@@ -5,7 +5,8 @@ const appointmentsList = require('../models/appointments');
 const PersonModel = require('../models/person');
 const http = require('http');
 const https = require('https');
-const api_helper = require('./api_helper')
+const axios = require('axios')
+const api_helper = require('./api_helper');
 
 
 //GET HTTP method to /pacientes
@@ -35,8 +36,24 @@ router.get('/specialist/:specialistName',(req,res) => {
 
 
 router.post('/request-appointment', (req,res,next) => {
-    console.log(req.body);
-    res.json({success: true, message: 'turno solicitado'});
+
+    axios.post('http://localhost:3001/vr/api/appointment/new',{
+        doctor: req.body.doctor_id,
+        patient: req.body.patient_id,
+        date: req.body.date,
+        hour: req.body.hour
+    })
+    .then((res) => {
+        console.log(`statusCode: ${res.statusCode}`)
+        console.log(res)
+      })
+      .catch((error) => {
+        console.error(error)
+        res.json({success: false, message: 'Tuvimos problemas para solicitar este turno, por favor intente de nuevo'});
+      });
+      res.json({success: true, message: 'turno solicitado'});
+
+
 })
 
 //POST HTTP method to /doctors

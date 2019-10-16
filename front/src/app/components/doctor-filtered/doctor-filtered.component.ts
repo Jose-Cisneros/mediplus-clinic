@@ -15,7 +15,7 @@ export class DoctorFilteredComponent implements OnInit {
   @Input() doctor: Doctor;
   showRequestComponent: boolean;
 
-  constructor(  ) { }
+  constructor() { }
 
   ngOnInit() {
     this.showRequestComponent = false;
