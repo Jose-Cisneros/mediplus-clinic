@@ -14,15 +14,13 @@ export class DoctorFilteredComponent implements OnInit {
   @Input() doctor: any;
   showRequestComponent = false;
 
-  constructor(
-    private patientViewStore: Store<fromPatientVIewState.State>
-  ) { }
+  constructor(  ) { }
 
   ngOnInit() {
   }
 
   requestAppointment() {
-    this.patientViewStore.dispatch(new PatientViewActions.RequestAppointment);
+    this.showRequestComponent = true;
   }
 
 }
