@@ -31,7 +31,7 @@ export class AppointmentRequestComponent implements OnInit {
 
   onSubmit() {
 
-    this.backService.postAppointment(this.doctor.id, '5da775b0e4d594146bf56599', this.date, '10:00').subscribe(
+    this.backService.postAppointment(this.data.id, '5da775b0e4d594146bf56599', this.date, '10:00').subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
