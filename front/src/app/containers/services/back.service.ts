@@ -13,4 +13,8 @@ export class BackService {
     return this.httpClient.get('/doctors/all');
   }
 
+  getBySpeciality(speciality: string): Observable<any> {
+    return this.httpClient.get('/doctors/specialist/' + speciality);
+  }
+
 }

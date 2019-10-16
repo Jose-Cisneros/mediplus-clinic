@@ -5,6 +5,7 @@ import * as PatientViewActions from '../../containers/actions/patient-view-statu
 import { Store } from '@ngrx/store';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AppointmentRequestComponent } from '../appointment-request/appointment-request.component';
+import { Doctor } from 'src/app/Models/doctor';
 
 @Component({
   selector: 'app-doctor-filtered',
@@ -13,12 +14,13 @@ import { AppointmentRequestComponent } from '../appointment-request/appointment-
 })
 export class DoctorFilteredComponent implements OnInit {
 
-  @Input() doctor: any;
-  showRequestComponent = false;
+  @Input() doctor: Doctor;
+  showRequestComponent: boolean;
 
   constructor( public dialog: MatDialog ) { }
 
   ngOnInit() {
+    this.showRequestComponent = false;
   }
 
   // requestAppointment() {
