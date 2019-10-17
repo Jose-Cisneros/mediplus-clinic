@@ -18,6 +18,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   specialistSelected = '';
   doctorsBySpecialist: Doctor[] = [];
+  loader = false;
 
 
   specialistArray = ['Traumatologo', 'Cirujano', 'Pediatra', 'Kinesiologo'];
@@ -34,7 +35,10 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   onSelectedSpecialist = (specialistName: string): void => {
 
+    this.doctorsBySpecialist = [];
+    this.loader = true;
     this.backService.getBySpeciality(specialistName).subscribe((doctors) => {
+      this.loader = false;
       doctors.forEach((doc: DoctorResponse) => {
         this.doctorsBySpecialist.push(new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality ))
       });
