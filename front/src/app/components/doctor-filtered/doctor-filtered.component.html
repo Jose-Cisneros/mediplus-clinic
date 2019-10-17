@@ -1,3 +1,4 @@
-<span>Dr. {{doctor.firstname}}</span>
-<span> {{doctor.lastname}}   </span>
-<button (click)="requestAppointment()">Solicitar turno</button>
+<div class="list-doctors">
+  <span>Dr. {{doctor.firstname + ' ' + doctor.lastname}}</span>
+  <span><button (click)="requestAppointment()" mat-raised-button color="primary">Solicitar turno</button></span>
+</div>

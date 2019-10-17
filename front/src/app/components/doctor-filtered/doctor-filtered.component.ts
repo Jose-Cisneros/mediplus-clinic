@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import { Store } from '@ngrx/store';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDatepickerModule } from '@angular/material';
 import { AppointmentRequestComponent } from '../appointment-request/appointment-request.component';
 import { Doctor } from 'src/app/Models/doctor';
 import { stringify } from '@angular/core/src/util';
@@ -11,7 +11,7 @@ import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'app-doctor-filtered',
   templateUrl: './doctor-filtered.component.html',
-  styleUrls: ['./doctor-filtered.component.css']
+  styleUrls: ['./doctor-filtered.component.scss']
 })
 export class DoctorFilteredComponent implements OnInit {
 

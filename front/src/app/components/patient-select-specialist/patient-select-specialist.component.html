@@ -10,7 +10,8 @@
     </div>
 </div>
 <div class="specialist-selected" *ngIf="specialistSelected!='' ">
-  <span>Contamos con los siguientes {{this.specialistSelected}}</span>
+  <span>Contamos con los siguientes: </span>
+  <span class="doctor-specialis">{{this.specialistSelected}}</span>
   <div *ngFor="let doctor of doctorsBySpecialist">
     <app-doctor-filtered [doctor]="doctor"></app-doctor-filtered>
   </div>

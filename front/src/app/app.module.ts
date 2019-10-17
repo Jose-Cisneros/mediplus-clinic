@@ -20,7 +20,8 @@ import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-fil
 import { AppointmentRequestComponent } from './components/appointment-request/appointment-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
-import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule} from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule, MatDatepickerModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -51,11 +52,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
     BrowserAnimationsModule
 
   ],
-  providers: [BackService],
-  bootstrap: [AppComponent],
+  providers: [
+    BackService,
+  ],
+  bootstrap: [
+    AppComponent
+  ],
   entryComponents: [
     AppointmentRequestComponent,
   ],
