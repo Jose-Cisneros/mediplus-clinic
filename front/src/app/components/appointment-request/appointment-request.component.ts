@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BackService } from 'src/app/containers/services/back.service';
 import { Doctor } from 'src/app/Models/doctor';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldModule, MatInputModule } from '@angular/material';
+import * as moment from 'moment';
 
 
 
@@ -34,7 +35,8 @@ export class AppointmentRequestComponent implements OnInit {
 
   onSubmit() {
 
-    this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', this.date, this.hour).subscribe(
+    let dateAux = moment(this.date).format('DD-MM-YYYY');
+    this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', dateAux, this.hour).subscribe(
       (res) => {
         console.log(res);
         this.sendedAppointment = true;
