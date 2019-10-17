@@ -17,7 +17,8 @@
       </p>
       <p>Hora: <input type="time" [(ngModel)]="hour" [ngModelOptions]="{standalone: true}" value="10:00"></p>
       <p class="p-submit">
-        <button type="submit" mat-raised-button color="primary">Enviar solicitud de turno</button>
+        <button type="submit" mat-raised-button color="primary" *ngIf="!this.sendedAppointment">Enviar solicitud de turno</button>
+        <span *ngIf="this.sendedAppointment">Turno solicitado</span>
       </p>
     </div>
   </div>

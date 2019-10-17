@@ -18,6 +18,7 @@ export class AppointmentRequestComponent implements OnInit {
   @Input() doctor: Doctor;
   date: string;
   hour: string;
+  sendedAppointment = false;
 
   constructor(
     private backService: BackService,
@@ -34,7 +35,13 @@ export class AppointmentRequestComponent implements OnInit {
   onSubmit() {
 
     this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', this.date, this.hour).subscribe(
-      (res) => console.log(res),
+      (res) => {
+        console.log(res);
+        this.sendedAppointment = true;
+        setTimeout(() => {
+          this.dialogRef.close();
+        }, 3000);
+      },
       (err) => console.log(err)
     );
   }
