@@ -35,7 +35,7 @@ export class AppointmentRequestComponent implements OnInit {
 
   onSubmit() {
 
-    let dateAux = moment(this.date).format('DD-MM-YYYY');
+    const dateAux = moment(this.date).format('DD-MM-YYYY');
     this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', dateAux, this.hour).subscribe(
       (res) => {
         console.log(res);
