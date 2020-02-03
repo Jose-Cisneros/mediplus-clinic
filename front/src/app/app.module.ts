@@ -26,6 +26,8 @@ import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppointmentHistoryComponent } from './components/appointment-history/appointment-history.component';
 import { CommentComponent } from './components/comment/comment.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
 
 
 
@@ -42,7 +44,8 @@ import { CommentComponent } from './components/comment/comment.component';
     AppointmentRequestComponent,
     FooterComponent,
     AppointmentHistoryComponent,
-    CommentComponent
+    CommentComponent,
+    SingUpComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { CommentComponent } from './components/comment/comment.component';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule
 
   ],
   providers: [
