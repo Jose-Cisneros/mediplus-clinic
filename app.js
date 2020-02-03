@@ -10,7 +10,7 @@ const config = require('./config/database');
 const app = express();
 
 //Port
-const port = 3000;
+const port = 3002;
 
 // Connect mongoose to our database
 mongoose.connect(config.database);

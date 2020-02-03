@@ -24,6 +24,7 @@ import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule, Ma
 import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -56,7 +57,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule
 
   ],
   providers: [
