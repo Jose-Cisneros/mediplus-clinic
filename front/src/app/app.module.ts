@@ -25,6 +25,7 @@ import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angula
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
 
 
 
@@ -39,7 +40,8 @@ import {MatMenuModule} from '@angular/material/menu';
     PatientSelectSpecialistComponent,
     DoctorFilteredComponent,
     AppointmentRequestComponent,
-    FooterComponent
+    FooterComponent,
+    SingUpComponent
   ],
   imports: [
     BrowserModule,
