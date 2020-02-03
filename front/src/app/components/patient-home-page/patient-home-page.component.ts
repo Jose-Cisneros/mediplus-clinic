@@ -16,7 +16,9 @@ export class PatientHomePageComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  goToAppointmentHistory() {
+    this.patientViewStore.dispatch(new PatientViewActions.AppointmentHistory);
+  }
   goToSelectSpecialist() {
     this.patientViewStore.dispatch(new PatientViewActions.SelectSpecialist);
   }

@@ -16,6 +16,10 @@
                       *ngIf="patientStatusView.isSelectSpecialist">
                     </app-patient-select-specialist>
 
+                    <app-appointment-history
+                      *ngIf="patientStatusView.isAppointmentHistory">
+                    </app-appointment-history>
+
             </div>
 
 </section>

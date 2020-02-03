@@ -5,13 +5,15 @@ export interface State {
   isRequestAppointmentView: boolean;
   isRequestedAppointmentsView: boolean;
   isSelectSpecialist: boolean;
+  isAppointmentHistory: boolean;
 }
 
 const initialState = {
   isHomeView: true,
   isRequestAppointmentView: false,
   isRequestedAppointmentsView: false,
-  isSelectSpecialist: false
+  isSelectSpecialist: false,
+  isAppointmentHistory: false
 };
 
 type ActionsType =
@@ -25,7 +27,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: true,
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: false,
-        isSelectSpecialist: false
+        isSelectSpecialist: false,
+        isAppointmentHistory: false
       };
     }
     case PatientViewActionTypes.RequestAppointment: {
@@ -34,7 +37,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isRequestAppointmentView: true,
         isRequestedAppointmentsView: false,
-        isSelectSpecialist: false
+        isSelectSpecialist: false,
+        isAppointmentHistory: false
 
       };
     }
@@ -44,7 +48,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: true,
-        isSelectSpecialist: false
+        isSelectSpecialist: false,
+        isAppointmentHistory: false
 
       };
     }
@@ -54,7 +59,18 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: false,
-        isSelectSpecialist: true
+        isSelectSpecialist: true,
+        isAppointmentHistory: false
+      };
+    }
+    case PatientViewActionTypes.AppointmentHistory: {
+      return {
+        ...state,
+        isHomeView: false,
+        isRequestAppointmentView: false,
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: false,
+        isAppointmentHistory: true
       };
     }
     default: {

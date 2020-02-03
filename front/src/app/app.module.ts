@@ -24,6 +24,8 @@ import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule, Ma
 import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppointmentHistoryComponent } from './components/appointment-history/appointment-history.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 
@@ -38,7 +40,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PatientSelectSpecialistComponent,
     DoctorFilteredComponent,
     AppointmentRequestComponent,
-    FooterComponent
+    FooterComponent,
+    AppointmentHistoryComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   entryComponents: [
     AppointmentRequestComponent,
+    CommentComponent
   ],
 })
 export class AppModule { }

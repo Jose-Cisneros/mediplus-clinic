@@ -1,0 +1,49 @@
+.appointment-history-header{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  margin-top: 25px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+.appointment{
+  margin-top: 15px;
+  margin-left: 35px;
+  width: 950px;
+  height: 100px;
+  color: rgb(94, 134, 172);
+  justify-content: space-between;
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  align-content: center;
+  text-align: center;
+}
+.doctor-info{
+  margin-top: 35px;
+  margin-left: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.appointment-info{
+  margin-top: 35px;
+  margin-left: 10px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.appointment-review{
+  margin-top: 35px;
+  margin-left: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.appointment-comment{
+  margin-top: 35px;
+  padding-right: 10px;
+}
