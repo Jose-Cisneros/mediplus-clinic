@@ -26,6 +26,8 @@ import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { AppRoutingModule } from './app-routing.module';
+import * as $ from 'jquery';
 
 
 
@@ -60,7 +62,9 @@ import { SingUpComponent } from './components/sing-up/sing-up.component';
     MatInputModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+    AppRoutingModule
+
 
   ],
   providers: [
