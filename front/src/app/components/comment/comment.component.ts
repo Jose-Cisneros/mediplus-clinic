@@ -1,6 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { StarRatingComponent } from 'ng-starrating';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-comment',

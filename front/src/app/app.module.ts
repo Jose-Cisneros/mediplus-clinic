@@ -30,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as $ from 'jquery';
+import { RatingModule } from 'ng-starrating';
 
 
 
@@ -67,7 +68,8 @@ import * as $ from 'jquery';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RatingModule
 
 
   ],
