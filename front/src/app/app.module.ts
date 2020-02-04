@@ -28,6 +28,8 @@ import { AppointmentHistoryComponent } from './components/appointment-history/ap
 import { CommentComponent } from './components/comment/comment.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { AppRoutingModule } from './app-routing.module';
+import * as $ from 'jquery';
 
 
 
@@ -64,7 +66,9 @@ import { SingUpComponent } from './components/sing-up/sing-up.component';
     MatInputModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+    AppRoutingModule
+
 
   ],
   providers: [
