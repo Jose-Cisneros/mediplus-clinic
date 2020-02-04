@@ -1,7 +1,10 @@
 <div class="limiter">
   <div class="container-login100">
-    <div class="login100-more" style="background-image: url('assets/singUp/images/singUp.jpg');"></div>
-
+    <div class="login100-more" style="background-image: url('assets/singUp/images/singUp.jpg');">
+      <a class="navbar-brand"  href="">
+        <img id="medipluslogo" src="../../../assets/img/logo.png" alt="">
+      </a>
+    </div>
     <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
       <form class="login100-form validate-form">
         <span class="login100-form-title p-b-59">
@@ -38,6 +41,13 @@
           <input class="input100" type="password" name="repeat-pass" placeholder="*************">
           <span class="focus-input100"></span>
         </div>
+        <!-- formulario especialistas -->
+      <div *ngIf="router.url === '/singInEspecialista'">
+        <div  class="wrap-input100 validate-input" data-validate="Campo obligatorio">
+          <span class="label-input100">Numero de colegiado</span>
+          <input class="input100" type="text" name="last name" placeholder="Numero de colegiado...">
+          <span class="focus-input100"></span>
+        </div>
 
         <div class="flex-m w-full p-b-33">
           <div class="contact100-form-checkbox">
@@ -45,7 +55,7 @@
             <label class="label-checkbox100" for="ckb1">
               <span class="txt1">
                 Acepto los
-                <a href="#" class="txt2 hov1">
+                <a href="" class="txt2 hov1">
                   Terminos y condiciones
                 </a>
               </span>
@@ -62,7 +72,7 @@
               Registrarme
             </button>
           </div>
-          <div class="container-login100-form-btn">
+          <div class="container-login100-form-btn link">
 
               <span class="txt1">
                 ¿ya tenes una cuenta?
@@ -73,9 +83,55 @@
 
         </div>
         </div>
+      </div>
+    <!-- fin formulario especialista -->
+
+    <!-- formulario pacientes -->
+    <div *ngIf="router.url === '/singInPaciente'">
+
+      <div class="flex-m w-full p-b-33">
+        <div class="contact100-form-checkbox">
+          <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+          <label class="label-checkbox100" for="ckb1">
+            <span class="txt1">
+              Acepto los
+              <a href="#" class="txt2 hov1">
+                Terminos y condiciones
+              </a>
+            </span>
+          </label>
+        </div>
+
+
+      </div>
+
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <button class="login100-form-btn">
+            Registrarme
+          </button>
+        </div>
+        <div class="container-login100-form-btn link">
+
+            <span class="txt1">
+              ¿ya tenes una cuenta?
+              <a routerLink='/logIn' class="txt2 hov1">
+                Iniciar sesion
+              </a>
+            </span>
+
+            <a href="#" class="txt2 hov1 link" matTooltip="no podra solicitar turnos online sin iniciar sesión">
+              Continuar sin iniciar sesion
+            </a>v
+
+      </div>
+      </div>
+    </div>
+    <!-- fin formulario pacientes -->
+
       </form>
     </div>
   </div>
 </div>
-
 

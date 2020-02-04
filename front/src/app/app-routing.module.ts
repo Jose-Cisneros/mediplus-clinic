@@ -1,9 +1,8 @@
+import { LogInComponent } from './components/log-in/log-in.component';
 import { PatientPageComponent } from './containers/patient-page/patient-page.component';
-import { PatientRequestAppointmentsComponent } from './components/patient-request-appointments/patient-request-appointments.component';
-import { SingUpComponent } from './components/sing-up/sing-up.component';
-import { PatientHomePageComponent } from './components/patient-home-page/patient-home-page.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SingInComponent } from './components/sing-in/sing-in.component';
 
 
 
@@ -15,9 +14,16 @@ const routes: Routes = [
   component: PatientPageComponent
 },
 {
-  path: 'singUp',
-  component: SingUpComponent
-}
+  path: 'singInPaciente',
+  component: SingInComponent
+},
+{
+  path: 'singInEspecialista',
+  component: SingInComponent
+},
+  {path: 'logIn',
+  component: LogInComponent
+  }
 ];
 
 @NgModule({

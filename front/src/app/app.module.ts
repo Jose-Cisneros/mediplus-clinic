@@ -25,9 +25,11 @@ import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angula
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
-import { SingUpComponent } from './components/sing-up/sing-up.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as $ from 'jquery';
+import { SingInComponent } from './components/sing-in/sing-in.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 
 
@@ -43,7 +45,8 @@ import * as $ from 'jquery';
     DoctorFilteredComponent,
     AppointmentRequestComponent,
     FooterComponent,
-    SingUpComponent
+    SingInComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import * as $ from 'jquery';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTooltipModule
 
 
   ],
