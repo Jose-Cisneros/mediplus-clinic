@@ -5,7 +5,7 @@ export enum PatientViewActionTypes {
     RequestAppointment = '[PatientViewShown] Request-Appointment',
     RequestedAppointments = '[PatientViewShown] Requested-Appointments',
     SelectSpecialist = '[SelectSpecialist] Select-specialist',
-    AppointmentHistory= '[AppointmentHistory] Appointment-History'
+    AllAppointmentsHistory= '[AllAppointmentsHistory] All-Appointments-History'
 }
 
 export class Home implements Action {
@@ -31,8 +31,8 @@ export class SelectSpecialist implements Action {
 
   constructor() { }
 }
-export class AppointmentHistory implements Action {
-  readonly type = PatientViewActionTypes.AppointmentHistory;
+export class AllAppointmentHistory implements Action {
+  readonly type = PatientViewActionTypes.AllAppointmentsHistory;
 
   constructor() { }
 }
@@ -41,4 +41,4 @@ export type PatientViewActionsUnion =
   | RequestAppointment
   | RequestedAppointments
   | SelectSpecialist
-  | AppointmentHistory;
+  | AllAppointmentHistory;

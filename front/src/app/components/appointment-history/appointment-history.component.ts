@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDatepickerModule } from '@angular/material';
 import { CommentComponent } from '../comment/comment.component';
+import { Appointment } from 'src/app/Models/appointment';
 
 @Component({
   selector: 'app-appointment-history',
@@ -9,7 +10,8 @@ import { CommentComponent } from '../comment/comment.component';
 })
 export class AppointmentHistoryComponent implements OnInit {
 
-  @Input() showCommentComponent: boolean;
+  @Input() appointment: Appointment;
+  showCommentComponent: boolean;
 
   constructor(
     public dialog: MatDialog ) { }

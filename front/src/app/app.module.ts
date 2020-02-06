@@ -31,6 +31,7 @@ import { SingUpComponent } from './components/sing-up/sing-up.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as $ from 'jquery';
 import { RatingModule } from 'ng-starrating';
+import { AllAppointmentsHistoryComponent } from './components/all-appointments-history/all-appointments-history.component';
 
 
 
@@ -48,7 +49,8 @@ import { RatingModule } from 'ng-starrating';
     FooterComponent,
     AppointmentHistoryComponent,
     CommentComponent,
-    SingUpComponent
+    SingUpComponent,
+    AllAppointmentsHistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,16 @@
-<span class="appointment-history-header">Historial de turnos</span>
 <div class="appointment">
     <div class="doctor-info">
-        <span>Dr. Juan Perez</span>
-        <span class="doctor-info-spec">Especialidad: Traumatologo</span>
+        <span>Dr. {{appointment.doctorFirstName + ' ' + appointment.doctorLastName}}</span>
+        <span class="doctor-info-spec">Especialidad: {{appointment.doctorSpeciality}}</span>
     </div>
     <div class="appointment-info">
-      <span>Dia: 12/02/2020</span>
-      <span>Hora: 15:30</span>
+      <span>Dia: {{appointment.date}}</span>
+      <span>Hora: XX:XX</span>
     </div>
     <div class="appointment-review">
       <div>
         <span>Durante el turno se realizo:</span>
-        <p>"aca va el comentario"</p>
+        <p>"XXXXXXXXXXXXXXXXXXXXXXX"</p>
       </div>
     </div>
     <div class="appointment-comment">
