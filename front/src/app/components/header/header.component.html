@@ -18,14 +18,14 @@
 							<div *ngIf="true" class="col-lg-12 pr-0">
 								<ul class="nav navbar-nav center_nav pull-right">
 									<li class="nav-item active">
-										<a class="nav-link" href="">Iniciar sesión</a>
+										<a class="nav-link" routerLink="/logIn">Iniciar sesión</a>
 									</li>
 									<li class="nav-item ">
-										<a class="nav-link" mat-button [matMenuTriggerFor]="singUp">Registrarme</a>
-                        <mat-menu #singUp="matMenu">
-                         <button mat-menu-item routerLink="/singUp">Como paciente</button>
-                         <button mat-menu-item>Como especialista</button>
-</mat-menu>
+										<a class="nav-link" mat-button [matMenuTriggerFor]="singIn">Registrarme</a>
+                        <mat-menu #singIn="matMenu">
+                         <button mat-menu-item routerLink="/singInPaciente">Como paciente</button>
+                         <button mat-menu-item routerLink="/singInEspecialista">Como especialista</button>
+                        </mat-menu>
 									</li>
 								</ul>
               </div>
