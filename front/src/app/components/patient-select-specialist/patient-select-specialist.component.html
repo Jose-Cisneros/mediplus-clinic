@@ -16,7 +16,7 @@
 </div>
 
 <div class="specialist-selected" *ngIf="specialistSelected!='' ">
-  <div *ngFor="let doctor of doctorsBySpecialist">
+  <div *ngFor="let doctor of doctorsBySpecialist" class="doctor-array">
     <app-doctor-filtered [doctor]="doctor"></app-doctor-filtered>
   </div>
 </div>
