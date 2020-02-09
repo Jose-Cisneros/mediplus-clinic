@@ -26,4 +26,9 @@ export class BackService {
     });
   }
 
+  // esta hardcodeado deberia pasarse el id del paciente logeado como parametro y tambien concatenarlo al link
+  getAllAppointmentsFromPatient(): Observable<any> {
+    return this.httpClient.get('/appointments/patient/5da480fd64fed67c60b5fa77');
+  }
+
 }

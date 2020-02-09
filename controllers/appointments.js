@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const appointmentsList = require('../models/appointments');
+const axios = require('axios')
+const api_helper = require('./api_helper');
 
 
 //GET HTTP method to /appointments
@@ -15,6 +17,16 @@ router.get('/',(req,res) => {
     })
 });
 
+router.get('/patient/:id',(req,res) => {    
+    let id = req.params.id;
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/patient/' + id)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
 //POST HTTP method to /appointments
 
 router.post('/createappointment', (req,res,next) => {

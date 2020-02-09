@@ -24,6 +24,16 @@ import { MatDialogModule, MatButtonModule, MatCheckboxModule, MatTableModule, Ma
 import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppointmentHistoryComponent } from './components/appointment-history/appointment-history.component';
+import { CommentComponent } from './components/comment/comment.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { AppRoutingModule } from './app-routing.module';
+import * as $ from 'jquery';
+import { RatingModule } from 'ng-starrating';
+import { AllAppointmentsHistoryComponent } from './components/all-appointments-history/all-appointments-history.component';
+import { SingInComponent } from './components/sing-in/sing-in.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 
 
@@ -38,7 +48,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PatientSelectSpecialistComponent,
     DoctorFilteredComponent,
     AppointmentRequestComponent,
-    FooterComponent
+    FooterComponent,
+    AppointmentHistoryComponent,
+    CommentComponent,
+    AllAppointmentsHistoryComponent,
+    SingInComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +71,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule,
+    AppRoutingModule,
+    RatingModule,
+    MatTooltipModule
+
 
   ],
   providers: [
@@ -67,6 +87,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   entryComponents: [
     AppointmentRequestComponent,
+    CommentComponent
   ],
 })
 export class AppModule { }
