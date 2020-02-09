@@ -22,4 +22,5 @@ export interface Person {
   firstName: string;
   lastName: string;
   phone: number;
+  prepaid: string[];
 }

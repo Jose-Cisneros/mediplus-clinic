@@ -34,6 +34,10 @@ import { AllAppointmentsHistoryComponent } from './components/all-appointments-h
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 
 
@@ -75,7 +79,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
     MatMenuModule,
     AppRoutingModule,
     RatingModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule,
+    MatIconModule
 
 
   ],
