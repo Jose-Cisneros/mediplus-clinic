@@ -36,6 +36,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import { PhoneAuthComponent } from './components/phone-auth/phone-auth.component';
 
 
 
@@ -57,7 +58,8 @@ import {MatIconModule} from '@angular/material/icon';
     CommentComponent,
     AllAppointmentsHistoryComponent,
     SingInComponent,
-    LogInComponent
+    LogInComponent,
+    PhoneAuthComponent
   ],
   imports: [
     BrowserModule,
