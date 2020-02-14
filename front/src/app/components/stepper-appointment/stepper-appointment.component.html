@@ -30,14 +30,12 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-          <div *ngIf="nextDay.availableHours" >
+          <div >
 
             <h6>{{SelectedDay.dateName}} {{SelectedDay.date}}</h6>
             <button type="button" class="appointment btn btn-primary " *ngFor="let hour of SelectedDay.availableHours"> {{hour}} hs </button>
            </div>
-           <div *ngIf="!nextDay.availableHours && nextDay.date">
-             <h4>El doctor no tiene turnos disponibles</h4>
-           </div>
+
         </div>
       <div class="buttons">
         <button mat-button matStepperNext>Siguiente</button>
