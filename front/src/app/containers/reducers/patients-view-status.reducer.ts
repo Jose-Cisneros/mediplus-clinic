@@ -6,6 +6,7 @@ export interface State {
   isRequestedAppointmentsView: boolean;
   isSelectSpecialist: boolean;
   isAllAppointmentsHistory: boolean;
+  isProfile: boolean;
 }
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   isRequestAppointmentView: false,
   isRequestedAppointmentsView: false,
   isSelectSpecialist: false,
-  isAllAppointmentsHistory: false
+  isAllAppointmentsHistory: false,
+  isProfile: false,
 };
 
 type ActionsType =
@@ -28,7 +30,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
-        isAllAppointmentsHistory: false
+        isAllAppointmentsHistory: false,
+        isProfile: false,
       };
     }
     case PatientViewActionTypes.RequestAppointment: {
@@ -38,7 +41,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestAppointmentView: true,
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
-        isAllAppointmentsHistory: false
+        isAllAppointmentsHistory: false,
+        isProfile: false,
 
       };
     }
@@ -49,7 +53,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: true,
         isSelectSpecialist: false,
-        isAllAppointmentsHistory: false
+        isAllAppointmentsHistory: false,
+        isProfile: false,
 
       };
     }
@@ -60,7 +65,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: false,
         isSelectSpecialist: true,
-        isAllAppointmentsHistory: false
+        isAllAppointmentsHistory: false,
+        isProfile: false,
       };
     }
     case PatientViewActionTypes.AllAppointmentsHistory: {
@@ -70,7 +76,19 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestAppointmentView: false,
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
-        isAllAppointmentsHistory: true
+        isAllAppointmentsHistory: true,
+        isProfile: false,
+      };
+    }
+    case PatientViewActionTypes.Profile: {
+      return {
+        ...state,
+        isHomeView: false,
+        isRequestAppointmentView: false,
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: false,
+        isAllAppointmentsHistory: false,
+        isProfile: true,
       };
     }
     default: {

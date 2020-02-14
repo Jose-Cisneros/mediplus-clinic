@@ -34,6 +34,7 @@ import { AllAppointmentsHistoryComponent } from './components/all-appointments-h
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { PattientProfileComponent } from './components/pattient-profile/pattient-profile.component';
 
 
 
@@ -53,7 +54,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
     CommentComponent,
     AllAppointmentsHistoryComponent,
     SingInComponent,
-    LogInComponent
+    LogInComponent,
+    PattientProfileComponent
   ],
   imports: [
     BrowserModule,
