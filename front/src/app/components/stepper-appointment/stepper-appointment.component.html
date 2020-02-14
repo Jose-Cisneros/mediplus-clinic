@@ -3,26 +3,41 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper >
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Seleccione una fecha</ng-template>
+      <ng-template matStepLabel>Seleccione un turno</ng-template>
 
-        <h5 class="title">proximos turnos disponibles</h5>
- <div class="day">
-   <div class="appointment"></div>
+        <h5 class="title">Proximos turnos disponibles</h5>
+ <div class="day" *ngIf="nextDay.availableHours">
+  <h6>{{nextDay.dateName}} {{nextDay.date}}</h6>
+   <div >
+    <button type="button" class="appointment btn btn-primary " *ngFor="let hour of nextDay.availableHours"> {{hour}} hs </button>
+   </div>
  </div>
+<div *ngIf="!nextDay.availableHours">
+  <h5>El doctor no tiene turnos disponibles</h5>
+</div>
     <div class="next day">
       <div clas="dayname"></div>
 
     </div>
 
-
         <div>
-          <h5 class="title">o seleccione una fecha</h5>
+          <h5 class="title">O seleccione una fecha</h5>
+
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" [(ngModel)]="date"
+            <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" [(ngModel)]="dateSelected"
             (dateChange)="getAppointmentsOnDay()" [ngModelOptions]="{standalone: true}" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+
+          <div *ngIf="nextDay.availableHours" >
+
+            <h6>{{SelectedDay.dateName}} {{SelectedDay.date}}</h6>
+            <button type="button" class="appointment btn btn-primary " *ngFor="let hour of SelectedDay.availableHours"> {{hour}} hs </button>
+           </div>
+           <div *ngIf="!nextDay.availableHours && nextDay.date">
+             <h4>El doctor no tiene turnos disponibles</h4>
+           </div>
         </div>
       <div class="buttons">
         <button mat-button matStepperNext>Siguiente</button>

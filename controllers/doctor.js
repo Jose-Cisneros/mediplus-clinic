@@ -134,7 +134,7 @@ router.delete('/', (req,res,next) => {
 });
 
 router.get('/onDay/:id/:date',(req,res) => {    
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/available/' + req.params.id + '/' + req.param.date)
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/available/' + req.params.id + '/' + req.params.date)
     .then(response => {
         res.json(response)
     })
