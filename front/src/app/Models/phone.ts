@@ -1,12 +1,10 @@
 export class PhoneNumber {
   country: string;
-  area: string;
-  prefix: string;
-  line: string;
+  number: string;
 
   // format phone numbers as E.164
   get e164() {
-    const num = this.country + this.area + this.prefix + this.line;
+    const num = '54' + this.number;
     return `+${num}`;
   }
 }

@@ -12,7 +12,7 @@ const routes: Routes = [
 // rutas de usuario
 {
   path: '',
-  component: PhoneAuthComponent
+  component: PatientPageComponent
 },
 {
   path: 'singInPaciente',

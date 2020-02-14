@@ -6,6 +6,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppointmentRequestComponent } from '../appointment-request/appointment-request.component';
 import * as moment from 'moment';
+import { PhoneNumber } from './../../Models/phone';
+import { WindowService } from './../../containers/services/window.service/window.service';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -15,6 +18,10 @@ import * as moment from 'moment';
 })
 export class StepperAppointmentComponent implements OnInit {
 
+  windowRef: any;
+  phoneNumber = new PhoneNumber();
+  verificationCode: string;
+  user: any;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -26,9 +33,24 @@ export class StepperAppointmentComponent implements OnInit {
               private appointmentService: AppointmentService,
               private backService: BackService,
               public dialogRef: MatDialogRef<AppointmentRequestComponent>,
+              private windowService: WindowService,
              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyC2hO7gE6HGux48_R4cQtgCHwNz45ktMxQ',
+      authDomain: 'mediplus-antentication.firebaseapp.com',
+      databaseURL: 'https://mediplus-antentication.firebaseio.com',
+      projectId: 'mediplus-antentication',
+      storageBucket: 'mediplus-antentication.appspot.com',
+      messagingSenderId: '97310092855',
+      appId: '1:97310092855:web:58d311125ec2b22a2819b2',
+      measurementId: 'G-RC49PHRXG9'
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    this.windowRef = this.windowService.windowRef;
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     moment.locale('es');
     this.getNextAppointment();
     this.firstFormGroup = this._formBuilder.group({
@@ -86,6 +108,36 @@ this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599'
   (err) => console.log(err)
 );
 }
+
+sendLoginCode() {
+
+  const appVerifier = this.windowRef.recaptchaVerifier;
+
+  const num = this.phoneNumber.e164;
+
+  firebase.auth().signInWithPhoneNumber(num, appVerifier)
+          .then(result => {
+
+              this.windowRef.confirmationResult = result;
+
+          })
+          .catch( error => console.log(error) );
+
+}
+
+verifyLoginCode() {
+  this.windowRef.confirmationResult
+                .confirm(this.verificationCode)
+                .then( result => {
+
+                  this.user = result.user;
+
+  })
+  .catch( error => console.log(error, 'Incorrect code entered?'));
+}
+
+
+
 
 }
 
