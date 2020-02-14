@@ -14,7 +14,7 @@ import * as firebase from 'firebase';
 @Component({
   selector: 'app-stepper-appointment',
   templateUrl: './stepper-appointment.component.html',
-  styleUrls: ['./stepper-appointment.component.css']
+  styleUrls: ['./stepper-appointment.component.scss']
 })
 export class StepperAppointmentComponent implements OnInit {
 
@@ -25,6 +25,7 @@ export class StepperAppointmentComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
   dateSelected: string;
   nextDay = new Date();
   SelectedDay = new Date();
@@ -58,6 +59,9 @@ export class StepperAppointmentComponent implements OnInit {
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
     });
 
   }
@@ -145,16 +149,4 @@ export class Date {
   date: string;
   dateName: string;
   availableHours: string[];
-
 }
-
-
-
-
-
-
-
-
-
-
-
