@@ -36,6 +36,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import { StepperAppointmentComponent } from './components/stepper-appointment/stepper-appointment.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -57,7 +59,8 @@ import {MatIconModule} from '@angular/material/icon';
     CommentComponent,
     AllAppointmentsHistoryComponent,
     SingInComponent,
-    LogInComponent
+    LogInComponent,
+    StepperAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import {MatIconModule} from '@angular/material/icon';
     RatingModule,
     MatTooltipModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule
 
 
   ],
