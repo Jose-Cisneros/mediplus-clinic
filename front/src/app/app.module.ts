@@ -34,11 +34,11 @@ import { AllAppointmentsHistoryComponent } from './components/all-appointments-h
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { PattientProfileComponent } from './components/pattient-profile/pattient-profile.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { StepperAppointmentComponent } from './components/stepper-appointment/stepper-appointment.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 
 
 
@@ -61,8 +61,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     AllAppointmentsHistoryComponent,
     SingInComponent,
     LogInComponent,
-    PattientProfileComponent,
     StepperAppointmentComponent,
+    PatientProfileComponent,
   ],
   imports: [
     BrowserModule,

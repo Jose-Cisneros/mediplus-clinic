@@ -23,6 +23,6 @@ export class PatientHomePageComponent implements OnInit {
     this.patientViewStore.dispatch(new PatientViewActions.SelectSpecialist);
   }
   goToProfile() {
-    this.patientViewStore.dispatch(new PatientViewActions.PattientProfile);
+    this.patientViewStore.dispatch(new PatientViewActions.PatientProfile);
   }
 }

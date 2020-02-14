@@ -6,7 +6,7 @@ export interface State {
   isRequestedAppointmentsView: boolean;
   isSelectSpecialist: boolean;
   isAllAppointmentsHistory: boolean;
-  isProfile: boolean;
+  isPatientProfile: boolean;
 }
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
   isRequestedAppointmentsView: false,
   isSelectSpecialist: false,
   isAllAppointmentsHistory: false,
-  isProfile: false,
+  isPatientProfile: false,
 };
 
 type ActionsType =
@@ -31,7 +31,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
-        isProfile: false,
+        isPatientProfile: false,
       };
     }
     case PatientViewActionTypes.RequestAppointment: {
@@ -42,7 +42,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
-        isProfile: false,
+        isPatientProfile: false,
 
       };
     }
@@ -54,7 +54,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: true,
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
-        isProfile: false,
+        isPatientProfile: false,
 
       };
     }
@@ -66,7 +66,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: false,
         isSelectSpecialist: true,
         isAllAppointmentsHistory: false,
-        isProfile: false,
+        isPatientProfile: false,
       };
     }
     case PatientViewActionTypes.AllAppointmentsHistory: {
@@ -77,10 +77,10 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
         isAllAppointmentsHistory: true,
-        isProfile: false,
+        isPatientProfile: false,
       };
     }
-    case PatientViewActionTypes.Profile: {
+    case PatientViewActionTypes.PatientProfile: {
       return {
         ...state,
         isHomeView: false,
@@ -88,7 +88,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isRequestedAppointmentsView: false,
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
-        isProfile: true,
+        isPatientProfile: true,
       };
     }
     default: {
