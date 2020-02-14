@@ -1,0 +1,44 @@
+.tittle{
+  text-align: center;
+  font-size: 13px;
+}
+
+.form{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.buttons{
+  text-align: right;
+}
+
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.stepper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.verificationCode{
+  width: 30% ;
+
+}
+
+.codeForm{
+  text-align: center;
+}
+
+.appointment{
+  margin-left: 2%;
+  margin-bottom: 2%;
+  width: 8%;
+}

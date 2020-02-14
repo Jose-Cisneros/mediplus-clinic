@@ -1,5 +1,22 @@
 export class Doctor {
 
+  private _rating: number;
+  public get rating(): number {
+    return this._rating;
+  }
+  public set rating(value: number) {
+    this._rating = value;
+  }
+
+  private _prepaid: string[];
+
+  public get prepaid(): string[] {
+    return this._prepaid;
+  }
+  public set prepaid(value: string[]) {
+    this._prepaid = value;
+  }
+
   private _speciality: string;
   public get speciality(): string {
     return this._speciality;
@@ -50,7 +67,7 @@ export class Doctor {
     this._phone = value;
   }
 
-  constructor(id: string, birthdate: string, dni: number, firstname: string, lastname: string, phone: number, speciality: string) {
+  constructor(id: string, birthdate: string, dni: number, firstname: string, lastname: string, phone: number, speciality: string, prepaid: string[], rating: number) {
     this._id = id;
     this._birthdate = birthdate;
     this._dni = dni;
@@ -58,6 +75,8 @@ export class Doctor {
     this._lastname = lastname;
     this._phone = phone;
     this._speciality = speciality;
+    this._prepaid = prepaid;
+    this._rating = rating;
   }
 }
 

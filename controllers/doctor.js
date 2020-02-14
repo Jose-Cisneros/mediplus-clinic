@@ -121,6 +121,26 @@ router.delete('/', (req,res,next) => {
             })
         }
     });
-  })
+  });
+
+  router.get('/next/:id',(req,res) => {    
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/next/' + req.params.id)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
+
+router.get('/onDay/:id/:date',(req,res) => {    
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/available/' + req.params.id + '/' + req.params.date)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
 
 module.exports = router;

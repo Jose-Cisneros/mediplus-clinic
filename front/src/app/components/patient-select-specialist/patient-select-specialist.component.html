@@ -16,7 +16,41 @@
 </div>
 
 <div class="specialist-selected" *ngIf="specialistSelected!='' ">
-  <div *ngFor="let doctor of doctorsBySpecialist">
+  <div class="doctor-filter-container">
+    <h3 class="filter-title">Filtros disponibles</h3>
+    <div class="doctor-filter">
+      <div class="os-filter">
+        <mat-form-field>
+          <mat-label>Obra social</mat-label>
+          <mat-select [(value)]="selectedOs">
+            <mat-option *ngFor="let os of obra_social" [value]="os">
+              {{os}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="rating-filter">
+        <mat-form-field>
+          <mat-label>Calificacion</mat-label>
+          <mat-select [(value)]="selectedRating">
+            <mat-option *ngFor="let star of starArray" [value]="star">
+              {{star}}
+              <span  *ngFor="let s of starArrayBuilder(star)">
+                <mat-icon class="filter-stars">star</mat-icon>
+              </span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="applyFilters()">Aplicar</button>
+      </div>
+      <div class="warning-button">
+        <button mat-raised-button color="warn" (click)="removeFilters()" *ngIf="filterApplied" >Borrar filtros</button>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let doctor of doctorsBySpecialistCopy" class="doctor-array">
     <app-doctor-filtered [doctor]="doctor"></app-doctor-filtered>
   </div>
 </div>

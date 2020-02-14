@@ -1,36 +1,30 @@
 .doctor{
-  margin-top: 15px;
-  margin-left: 35px;
   width: 950px;
   height: 100px;
   color: rgb(94, 134, 172);
-  justify-content: space-between;
-  display: flex;
   background-color: whitesmoke;
   border-radius: 10px;
-  align-content: center;
   text-align: center;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .doctor-photo{
-  margin-top: 10px;
-  margin-left: 10px;
+
   width: 80px;
   height: 80px;
   background-image: url('../../../assets/img/t1.jpg');
+  background-size: contain;
 }
 .doctor-info{
-  margin-top: 35px;
-  margin-left: 10px;
+
   width: 300px;
   display: flex;
   justify-content: space-between;
 }
 .doctor-contact{
-  margin-top: 25px;
-  margin-left: 10px;
+
   width: 200px;
 }
-.button{
-  margin-top: 35px;
-  padding-right: 10px;
-}
+
