@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/containers/services/auth.service/auth.service';
 import { Appointment } from './../../Models/appointment';
 import { BackService } from 'src/app/containers/services/back.service';
 import { AppointmentService } from './../../containers/services/appointment.service/appointment.service';
@@ -9,6 +10,7 @@ import * as moment from 'moment';
 import { PhoneNumber } from './../../Models/phone';
 import { WindowService } from './../../containers/services/window.service/window.service';
 import * as firebase from 'firebase';
+import { User } from 'src/app/Models/user';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class StepperAppointmentComponent implements OnInit {
   windowRef: any;
   phoneNumber = '';
   verificationCode: string;
-  user: any;
+  user: User;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -36,6 +38,7 @@ export class StepperAppointmentComponent implements OnInit {
               private backService: BackService,
               public dialogRef: MatDialogRef<AppointmentRequestComponent>,
               private windowService: WindowService,
+              private auth: AuthService,
              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class StepperAppointmentComponent implements OnInit {
       appId: '1:97310092855:web:58d311125ec2b22a2819b2',
       measurementId: 'G-RC49PHRXG9'
     };
+    this.getCurrentUser();
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     this.windowRef = this.windowService.windowRef;
@@ -74,6 +78,7 @@ export class StepperAppointmentComponent implements OnInit {
   });
     moment.locale('es');
     this.getNextAppointment();
+    console.log(this.user);
   }
 
 getNextAppointment() {
@@ -149,6 +154,14 @@ verifyLoginCode() {
   .catch( error => console.log(error, 'Incorrect code entered?'));
 }
 
+getCurrentUser() {
+  this.auth.currentUser().subscribe(
+    data => {
+      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone);
+    },
+    err => console.log(err)
+  );
+}
 
 
 
