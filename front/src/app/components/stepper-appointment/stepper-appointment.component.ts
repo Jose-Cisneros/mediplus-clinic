@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
 export class StepperAppointmentComponent implements OnInit {
 
   windowRef: any;
-  phoneNumber = new PhoneNumber();
+  phoneNumber = '';
   verificationCode: string;
   user: any;
   isLinear = false;
@@ -30,6 +30,7 @@ export class StepperAppointmentComponent implements OnInit {
   nextDay = new Date();
   SelectedDay = new Date();
 
+
   constructor(private _formBuilder: FormBuilder,
               private appointmentService: AppointmentService,
               private backService: BackService,
@@ -38,6 +39,16 @@ export class StepperAppointmentComponent implements OnInit {
              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+
     const firebaseConfig = {
       apiKey: 'AIzaSyC2hO7gE6HGux48_R4cQtgCHwNz45ktMxQ',
       authDomain: 'mediplus-antentication.firebaseapp.com',
@@ -54,16 +65,6 @@ export class StepperAppointmentComponent implements OnInit {
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     moment.locale('es');
     this.getNextAppointment();
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
-
   }
 
 getNextAppointment() {
@@ -117,7 +118,7 @@ sendLoginCode() {
 
   const appVerifier = this.windowRef.recaptchaVerifier;
 
-  const num = this.phoneNumber.e164;
+  const num = '+54' + this.phoneNumber;
 
   firebase.auth().signInWithPhoneNumber(num, appVerifier)
           .then(result => {

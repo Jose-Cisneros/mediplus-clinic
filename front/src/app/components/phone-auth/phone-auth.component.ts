@@ -37,7 +37,13 @@ export class PhoneAuthComponent implements OnInit {
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     this.windowRef = this.windowService.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': function(response) {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        this.firebase.onSignInSubmit();
+      }
+    });
   }
 
   sendLoginCode() {
