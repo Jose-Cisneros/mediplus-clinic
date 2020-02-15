@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,5 +11,10 @@ export class AuthService {
 
   logIn( user: {email: string, password: string} ): Observable<any> {
     return this.httpClient.post('/auth/login', { user });
+}
+
+currentUser(): Observable<any> {
+  return this.httpClient.get('/pacientes/currentUser', {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
+
 }
 }

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pacientesList = require('../models/patient');
 const appointmentsList = require('../models/appointments');
+const verifyToken = require('./tokenValidator');
+const api_helper = require('./api_helper');
 
 
 
@@ -16,6 +18,8 @@ router.get('/',(req,res) => {
         }
     })
 });
+
+
 
 //POST HTTP method to /pacientes
 
@@ -73,5 +77,39 @@ router.delete('/', (req,res,next)=> {
       })
   });
 
+//   retorna el usuario logueado
+
+router.get('/currentUser', verifyToken, (req,res) => {    
+    api_helper.make_API_call('http://localhost:3001/vr/api/patient/' + req.userId)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
+
+router.post('/createPatient', (req,res,next) => {
+    axios.post('http://localhost:3001/vr/api/doctor/work/'+ req.userId,{ "person": {
+        
+        "firstName": req.body.workableDay.number,
+        "lastName":  req.body.workableDay.startHour,
+        "phone":  req.body.workableDay.finishHour,
+        "breakStart":  req.body.workableDay.breakStart
+        },
+        "patient": {
+		
+        }
+      
+    })
+    .then(response => {
+        res.json(response)
+        console.log(response);
+    })
+    .catch(error => {
+        res.send(error)
+    });
+
+})
 
 module.exports = router;

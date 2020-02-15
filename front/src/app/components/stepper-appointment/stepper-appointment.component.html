@@ -37,24 +37,24 @@
   <mat-step [stepControl]="secondFormGroup">
     <div class="stepper">
       <ng-template matStepLabel>Ingrese sus datos</ng-template>
-      <form [formGroup]="secondFormGroup" class="secondForm">
-        <div class="form-patient-data">
+      <form [formGroup]="secondFormGroup" class="secondForm" *ngIf="user">
+        <div class="form-patient-data" >
           <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput  placeholder="Nombre" required>
+            <input matInput  placeholder="Nombre"  [(ngModel)]="user.name" [ngModelOptions]="{ standalone: true }"  >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Apellido</mat-label>
-            <input matInput  placeholder="Apellido" required>
+            <input matInput  placeholder="Apellido"[(ngModel)]="user.lastName"  [ngModelOptions]="{ standalone: true }" >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Obra social</mat-label>
-            <input matInput  placeholder="Obra social" required>
+            <input matInput  placeholder="Obra social">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
             <span matPrefix>+54 &nbsp;</span>
-            <input type="tel" matInput placeholder="221-123-4567">
+            <input type="text" matInput  placeholder="221-123-4567" [(ngModel)]="user.phone" [ngModelOptions]="{ standalone: true }">
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </div>
@@ -66,7 +66,40 @@
         </div>
         <div class="buttons">
           <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button matStepperNext>Siguiente</button>
+          <button mat-button matStepperNext  (click)="sendLoginCode()">Siguiente</button>
+        </div>
+      </form>
+     <!-- formulario si no hay usuario logueado, se debe crear un nuevo paciente -->
+      <form [formGroup]="secondFormGroup" class="secondForm" *ngIf="!user">
+        <div class="form-patient-data" >
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput  placeholder="Nombre" >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput  placeholder="Apellido" >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Obra social</mat-label>
+            <input matInput  placeholder="Obra social">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Telefono</mat-label>
+            <span matPrefix>+54 &nbsp;</span>
+            <input type="text" matInput  placeholder="221-123-4567" [(ngModel)]="phoneNumber" [ngModelOptions]="{ standalone: true }">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="form-patient-comment">
+          <mat-form-field class="comment">
+            <mat-label>Deja un comentario sobre el turno</mat-label>
+            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="buttons">
+          <button mat-button matStepperPrevious>Volver</button>
+          <button mat-button matStepperNext  (click)="sendLoginCode()">Siguiente</button>
         </div>
       </form>
     </div>
@@ -76,14 +109,17 @@
     <form [formGroup]="thirdFormGroup">
       <div class="codeForm">
         <mat-form-field  class="verificationCode" >
+          <div id="recaptcha-container"></div>
           <mat-label >Ingrese codigo de verificacion</mat-label>
           <input matInput  placeholder="xxxxxx" required>
         </mat-form-field>
         <div class="buttons">
           <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button (click)="stepper.reset()">Enviar</button>
+          <button mat-button (click)="verifyLoginCode()">Enviar</button>
         </div>
       </div>
     </form>
   </mat-step>
 </mat-horizontal-stepper>
+
+<div id="recaptcha-container"></div>

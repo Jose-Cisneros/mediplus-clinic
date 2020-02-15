@@ -36,9 +36,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { LogInComponent } from './components/log-in/log-in.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import { PhoneAuthComponent } from './components/phone-auth/phone-auth.component';
 import { StepperAppointmentComponent } from './components/stepper-appointment/stepper-appointment.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
+
 
 
 
@@ -63,6 +65,9 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
     LogInComponent,
     StepperAppointmentComponent,
     PatientProfileComponent,
+    PhoneAuthComponent,
+    StepperAppointmentComponent
+
   ],
   imports: [
     BrowserModule,

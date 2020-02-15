@@ -3,6 +3,7 @@ import { PatientPageComponent } from './containers/patient-page/patient-page.com
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SingInComponent } from './components/sing-in/sing-in.component';
+import { PhoneAuthComponent } from './components/phone-auth/phone-auth.component';
 
 
 
