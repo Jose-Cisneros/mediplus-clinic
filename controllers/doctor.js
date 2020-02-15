@@ -7,6 +7,7 @@ const http = require('http');
 const https = require('https');
 const axios = require('axios')
 const api_helper = require('./api_helper');
+const verifyToken = require('./tokenValidator');
 
 
 //GET HTTP method to /pacientes
@@ -46,6 +47,25 @@ router.post('/request-appointment', (req,res,next) => {
     .then((res) => {
         console.log(`statusCode: ${res.statusCode}`)
         console.log(res)
+      })
+      .catch((error) => {
+        console.error(error)
+        res.json({success: false, message: 'Tuvimos problemas para solicitar este turno, por favor intente de nuevo'});
+      });
+      res.json({success: true, message: 'turno solicitado'});
+
+})
+
+router.post('/request-appointment-logged', verifyToken,  (req,res,next) => {
+
+    axios.post('http://localhost:3001/vr/api/appointment/new',{
+        doctor: req.body.doctor_id,
+        patient: req.userId,
+        date: req.body.date,
+        hour: req.body.hour
+    })
+    .then((res) => {
+        console.log(`statusCode: ${res.statusCode}`)
       })
       .catch((error) => {
         console.error(error)
