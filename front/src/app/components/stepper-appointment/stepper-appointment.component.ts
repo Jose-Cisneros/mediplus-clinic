@@ -21,8 +21,8 @@ import { User } from 'src/app/Models/user';
 export class StepperAppointmentComponent implements OnInit {
 
   windowRef: any;
-  phoneNumber = '';
   verificationCode: string;
+  newUser = new User('', '', '', '');
   user: User;
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -120,8 +120,8 @@ getDay(date: string) {
 );
 
 }
-requetsAppointment(date: string, hour: string) {
-this.backService.requetsAppointment(this.data.doctor.id, date, hour ).subscribe(
+requetsAppointment() {
+this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour).subscribe(
   data => {
     console.log(data);
   },
@@ -129,11 +129,26 @@ this.backService.requetsAppointment(this.data.doctor.id, date, hour ).subscribe(
 );
 }
 
+  requetsAppointmentAndCreateUser() {
+  this.backService.createPatient(this.newUser).subscribe(
+   res => {
+      this.newUser.id = res.user._id;
+      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
+        result => {
+          console.log(result);
+        },
+        (err) => console.log(err)
+      );
+    },
+    err => console.log(err)
+  );
+  }
+
 sendLoginCode() {
 
   const appVerifier = this.windowRef.recaptchaVerifier;
 
-  let num = '+54' + this.phoneNumber;
+  let num = '+54' + this.newUser.phone;
   if ( this.user ) {
     num = '+54' + this.user.phone;
   }
@@ -152,8 +167,10 @@ verifyLoginCode() {
                 .confirm(this.verificationCode)
                 .then( result => {
                    if ( this.user ) {
-                     this.requetsAppointment(this.turn.date, this.turn.hour);
-                   }
+                     this.requetsAppointment();
+                   } else {
+                     this.requetsAppointmentAndCreateUser();
+                    }
 
   })
   .catch( error => console.log(error, 'Incorrect code entered?'));

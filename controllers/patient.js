@@ -4,6 +4,8 @@ const pacientesList = require('../models/patient');
 const appointmentsList = require('../models/appointments');
 const verifyToken = require('./tokenValidator');
 const api_helper = require('./api_helper');
+const axios = require('axios')
+
 
 
 
@@ -90,20 +92,21 @@ router.get('/currentUser', verifyToken, (req,res) => {
 });
 
 router.post('/createPatient', (req,res,next) => {
-    axios.post('http://localhost:3001/vr/api/doctor/work/'+ req.userId,{ "person": {
+    axios.post('http://localhost:3001/vr/api/patient/create' ,{ 'person': {
         
-        "firstName": req.body.workableDay.number,
-        "lastName":  req.body.workableDay.startHour,
-        "phone":  req.body.workableDay.finishHour,
-        "breakStart":  req.body.workableDay.breakStart
+        'firstName': req.body.user.name,
+        'lastName':  req.body.user.lastName,
+        'phone':  req.body.user.phone,
         },
-        "patient": {
+        'patient': {
 		
         }
       
     })
     .then(response => {
-        res.json(response)
+        res.status(200).send({
+            user: response.data,
+          });
         console.log(response);
     })
     .catch(error => {
