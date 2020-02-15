@@ -53,7 +53,6 @@ router.post('/request-appointment', (req,res,next) => {
       });
       res.json({success: true, message: 'turno solicitado'});
 
-
 })
 
 //POST HTTP method to /doctors

@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
       data => {
         this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone);
       },
-      err => console.log(err)
+
     );
   }
 

@@ -89,5 +89,27 @@ router.get('/currentUser', verifyToken, (req,res) => {
     });
 });
 
+router.post('/createPatient', (req,res,next) => {
+    axios.post('http://localhost:3001/vr/api/doctor/work/'+ req.userId,{ "person": {
+        
+        "firstName": req.body.workableDay.number,
+        "lastName":  req.body.workableDay.startHour,
+        "phone":  req.body.workableDay.finishHour,
+        "breakStart":  req.body.workableDay.breakStart
+        },
+        "patient": {
+		
+        }
+      
+    })
+    .then(response => {
+        res.json(response)
+        console.log(response);
+    })
+    .catch(error => {
+        res.send(error)
+    });
+
+})
 
 module.exports = router;
