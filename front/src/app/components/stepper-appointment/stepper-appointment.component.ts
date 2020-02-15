@@ -62,7 +62,16 @@ export class StepperAppointmentComponent implements OnInit {
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     this.windowRef = this.windowService.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',  {
+    size: 'invisible',
+    callback: function(response) {
+      // reCAPTCHA solved - will proceed with submit function
+      console.log(response);
+    },
+    'expired-callback': function() {
+      // Reset reCAPTCHA?
+    }
+  });
     moment.locale('es');
     this.getNextAppointment();
   }
@@ -122,7 +131,6 @@ sendLoginCode() {
 
   firebase.auth().signInWithPhoneNumber(num, appVerifier)
           .then(result => {
-
               this.windowRef.confirmationResult = result;
 
           })
