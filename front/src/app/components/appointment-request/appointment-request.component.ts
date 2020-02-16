@@ -33,18 +33,4 @@ export class AppointmentRequestComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-
-    const dateAux = moment(this.date).format('DD-MM-YYYY');
-    this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', dateAux, this.hour).subscribe(
-      (res) => {
-        console.log(res);
-        this.sendedAppointment = true;
-        setTimeout(() => {
-          this.dialogRef.close();
-        }, 3000);
-      },
-      (err) => console.log(err)
-    );
-  }
 }

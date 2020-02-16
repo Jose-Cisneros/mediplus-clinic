@@ -22,7 +22,7 @@ export class StepperAppointmentComponent implements OnInit {
 
   windowRef: any;
   verificationCode: string;
-  newUser = new User('', '', '', '');
+  newUser = new User('', '', '', '', '', '');
   user: User;
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -179,7 +179,7 @@ verifyLoginCode() {
 getCurrentUser() {
   this.auth.currentUser().subscribe(
     data => {
-      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone);
+      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone, data.person.birthDate, data.person.dni);
     },
   );
 }
