@@ -2,6 +2,9 @@ import { AuthService } from 'src/app/containers/services/auth.service/auth.servi
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/Models/user';
+import { Store } from '@ngrx/store';
+import * as fromPatientVIewState from '../../containers/reducers/index';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 
 
 @Component({
@@ -14,7 +17,9 @@ import { User } from 'src/app/Models/user';
 export class HeaderComponent implements OnInit {
   user: User;
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService,
+              private patientViewStore: Store<fromPatientVIewState.State>
+              ) { }
 
   ngOnInit() {
     this.getCurrentUser();
@@ -35,6 +40,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['logIn']);
 
     }
-
+  goToProfile() {
+    this.patientViewStore.dispatch(new PatientViewActions.PatientProfile);
+  }
 
 }
