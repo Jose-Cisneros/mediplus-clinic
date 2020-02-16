@@ -21,8 +21,8 @@ import { User } from 'src/app/Models/user';
 export class StepperAppointmentComponent implements OnInit {
 
   windowRef: any;
-  phoneNumber = '';
   verificationCode: string;
+  newUser = new User('', '', '', '');
   user: User;
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -30,7 +30,8 @@ export class StepperAppointmentComponent implements OnInit {
   thirdFormGroup: FormGroup;
   dateSelected: string;
   nextDay = new Date();
-  SelectedDay = new Date();
+  selectedDay = new Date();
+  turn = new Turn();
 
 
   constructor(private _formBuilder: FormBuilder,
@@ -96,14 +97,14 @@ this.appointmentService.getNext(this.data.doctor._id).subscribe(
 }
 
 getAppointmentsOnDay() {
-  this.SelectedDay = new Date();
+  this.selectedDay = new Date();
   const day =  moment(this.dateSelected).format('DD-MM-YYYY');
   this.appointmentService.getOnDay(this.data.doctor._id, day).subscribe(
     (data: string[]) => {
-      this.SelectedDay.date = moment(this.dateSelected).format('DD-MM-YYYY');
-      this.SelectedDay.dateName = moment(this.dateSelected, 'DD-MM-YYYY' ).format('dddd');
-      this.SelectedDay.availableHours = data;
-      console.log('selectedDAy', this.SelectedDay);
+      this.selectedDay.date = moment(this.dateSelected).format('DD-MM-YYYY');
+      this.selectedDay.dateName = moment(this.dateSelected, 'DD-MM-YYYY' ).format('dddd');
+      this.selectedDay.availableHours = data;
+      console.log('selectedDAy', this.selectedDay);
 
   },
   (err) => console.log(err)
@@ -119,8 +120,8 @@ getDay(date: string) {
 );
 
 }
-requetsAppointment(date: string, hour: string) {
-this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599', date, hour ).subscribe(
+requetsAppointment() {
+this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour).subscribe(
   data => {
     console.log(data);
   },
@@ -128,11 +129,29 @@ this.backService.postAppointment(this.data.doctor.id, '5da775b0e4d594146bf56599'
 );
 }
 
+  requetsAppointmentAndCreateUser() {
+  this.backService.createPatient(this.newUser).subscribe(
+   res => {
+      this.newUser.id = res.user._id;
+      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
+        result => {
+          console.log(result);
+        },
+        (err) => console.log(err)
+      );
+    },
+    err => console.log(err)
+  );
+  }
+
 sendLoginCode() {
 
   const appVerifier = this.windowRef.recaptchaVerifier;
 
-  const num = '+54' + this.phoneNumber;
+  let num = '+54' + this.newUser.phone;
+  if ( this.user ) {
+    num = '+54' + this.user.phone;
+  }
 
   firebase.auth().signInWithPhoneNumber(num, appVerifier)
           .then(result => {
@@ -147,8 +166,11 @@ verifyLoginCode() {
   this.windowRef.confirmationResult
                 .confirm(this.verificationCode)
                 .then( result => {
-
-                  this.user = result.user;
+                   if ( this.user ) {
+                     this.requetsAppointment();
+                   } else {
+                     this.requetsAppointmentAndCreateUser();
+                    }
 
   })
   .catch( error => console.log(error, 'Incorrect code entered?'));
@@ -162,6 +184,12 @@ getCurrentUser() {
   );
 }
 
+selectTurn( date: string, hour: string ) {
+  this.turn.date = date;
+  this.turn.hour = hour;
+
+}
+
 
 
 }
@@ -170,4 +198,9 @@ export class Date {
   date: string;
   dateName: string;
   availableHours: string[];
+}
+
+export class Turn {
+  date: string;
+  hour: string;
 }

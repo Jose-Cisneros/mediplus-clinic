@@ -7,7 +7,8 @@
       <div class="day" *ngIf="nextDay.availableHours">
         <h6>{{nextDay.dateName}} {{nextDay.date}}</h6>
         <div >
-          <button type="button" class="appointment btn btn-primary " *ngFor="let hour of nextDay.availableHours"> {{hour}} hs </button>
+          <button mat-button matStepperNext class="appointment btn btn-primary "
+             *ngFor="let hour of nextDay.availableHours" (click)="selectTurn( nextDay.date, hour)"> {{hour}} hs </button>
         </div>
       </div>
       <div *ngIf="!nextDay.availableHours">
@@ -25,8 +26,9 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div >
-          <h6>{{SelectedDay.dateName}} {{SelectedDay.date}}</h6>
-          <button type="button" class="appointment btn btn-primary " *ngFor="let hour of SelectedDay.availableHours"> {{hour}} hs </button>
+          <h6>{{selectedDay.dateName}} {{selectedDay.date}}</h6>
+          <button mat-button matStepperNext class="appointment btn btn-primary "
+          *ngFor="let hour of selectedDay.availableHours" (click)="selectTurn( selectedDay.date, hour)"> {{hour}} hs </button>
         </div>
       </div>
       <div class="buttons">
@@ -74,11 +76,11 @@
         <div class="form-patient-data" >
           <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput  placeholder="Nombre" >
+            <input matInput  placeholder="Nombre" [(ngModel)]="newUser.name"  [ngModelOptions]="{ standalone: true }" >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Apellido</mat-label>
-            <input matInput  placeholder="Apellido" >
+            <input matInput  placeholder="Apellido" [(ngModel)]="newUser.lastName"  [ngModelOptions]="{ standalone: true }" >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Obra social</mat-label>
@@ -87,7 +89,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
             <span matPrefix>+54 &nbsp;</span>
-            <input type="text" matInput  placeholder="221-123-4567" [(ngModel)]="phoneNumber" [ngModelOptions]="{ standalone: true }">
+            <input type="text" matInput  placeholder="221-123-4567" [(ngModel)]="newUser.phone" [ngModelOptions]="{ standalone: true }">
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </div>
@@ -111,7 +113,7 @@
         <mat-form-field  class="verificationCode" >
           <div id="recaptcha-container"></div>
           <mat-label >Ingrese codigo de verificacion</mat-label>
-          <input matInput  placeholder="xxxxxx" required>
+          <input matInput  placeholder="xxxxxx" required [(ngModel)]="verificationCode" [ngModelOptions]="{ standalone: true }" >
         </mat-form-field>
         <div class="buttons">
           <button mat-button matStepperPrevious>Volver</button>
