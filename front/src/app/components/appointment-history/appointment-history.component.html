@@ -1,0 +1,19 @@
+<div class="appointment">
+    <div class="doctor-info">
+        <span>Dr. {{appointment.doctorFirstName + ' ' + appointment.doctorLastName}}</span>
+        <span class="doctor-info-spec">Especialidad: {{appointment.doctorSpeciality}}</span>
+    </div>
+    <div class="appointment-info">
+      <span>Dia: {{appointment.date}}</span>
+      <span>Hora: XX:XX</span>
+    </div>
+    <div class="appointment-review">
+      <div>
+        <span>Durante el turno se realizo:</span>
+        <p>"XXXXXXXXXXXXXXXXXXXXXXX"</p>
+      </div>
+    </div>
+    <div class="appointment-comment">
+      <button mat-raised-button color="primary" (click)="comment()">Ingresar comentario sobre el doctor</button>
+    </div>
+  </div>

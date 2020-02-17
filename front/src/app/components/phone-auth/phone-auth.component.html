@@ -1,0 +1,32 @@
+<div [hidden]="user">
+  <h1>Sign In with Your Phone Number</h1>
+
+  <label for="phone">Phone Number</label><br>
+    <mat-form-field class="example-full-width">
+          <mat-label>Telefono</mat-label>
+          <span matPrefix>+54 &nbsp;</span>
+          <input type="tel" [(ngModel)]="phoneNumber.number" matInput placeholder="221-123-4567">
+          <mat-icon matSuffix>phone</mat-icon>
+   </mat-form-field>
+
+
+  <div id="recaptcha-container"></div>
+
+  <button (click)="sendLoginCode()">SMS Text Login Code</button>
+
+  <div *ngIf="windowRef.confirmationResult">
+    <hr>
+    <label for="code">Enter your Verification Code Here</label><br>
+    <input type="text" name="code" [(ngModel)]="verificationCode">
+
+    <button (click)="verifyLoginCode()">Verify</button>
+  </div>
+
+</div>
+
+<div *ngIf="user">
+  You have successfully logged in with your phone number!
+
+  UserId: {{ user?.uid }}
+
+</div>

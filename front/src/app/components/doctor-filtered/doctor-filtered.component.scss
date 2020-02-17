@@ -1,0 +1,30 @@
+.doctor{
+  width: 950px;
+  height: 100px;
+  color: rgb(94, 134, 172);
+  background-color: whitesmoke;
+  border-radius: 10px;
+  text-align: center;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.doctor-photo{
+
+  width: 80px;
+  height: 80px;
+  background-image: url('../../../assets/img/t1.jpg');
+  background-size: contain;
+}
+.doctor-info{
+
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.doctor-contact{
+
+  width: 200px;
+}
+

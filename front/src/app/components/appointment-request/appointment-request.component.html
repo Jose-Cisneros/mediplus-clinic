@@ -1,0 +1,28 @@
+<!-- <form (submit)="onSubmit()" class="requestAppointment">
+  <div>
+    <div class="form-header">
+        <p>
+          Usted va  solicitar un turno para:
+          <span class="form-doctor">{{data.doctor.firstname + ' ' + data.doctor.lastname}}</span>
+        </p>
+        <p> Por favor, ingrese la fecha y hora deseada</p>
+    </div>
+    <div class="form-content">
+      <p>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>Hora: <input type="time" [(ngModel)]="hour" [ngModelOptions]="{standalone: true}" value="10:00"></p>
+      <p class="p-submit">
+        <button type="submit" mat-raised-button color="primary" *ngIf="!this.sendedAppointment">Enviar solicitud de turno</button>
+        <span *ngIf="this.sendedAppointment" class=" font-weight-bold text-success">Turno solicitado con éxito</span>
+      </p>
+    </div>
+  </div>
+</form> -->
+
+<app-stepper-appointment></app-stepper-appointment>
+

@@ -1,0 +1,81 @@
+@media(min-width: 1px) {
+  .back-label {
+    font-weight: 550;
+    color: white;
+  }
+  .white-text{
+    color: white;
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .home-button {
+    background-color: rgb(94, 134, 172);
+    width: 200px;
+    height: 95px;
+    border-radius: 8px;
+  }
+
+  .button-content {
+    color: white;
+    font-weight: 550;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .specialist-selected{
+    margin-top: 35px;
+    margin-left: 35px;
+    color: white;
+  }
+  .doctor-specialis{
+    font-weight: bold;
+  }
+}
+
+@media(min-width: 768px) {
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+}
+
+.doctor-array {
+  display: flex;
+  padding-top: 10px;
+}
+
+.doctor-filter-container {
+  width: 100%;
+  height: 100px;
+
+  padding-bottom: 30px;
+}
+.doctor-filter {
+  display: flex;
+  align-items: baseline;
+}
+
+.filter-title {
+  color: white;
+}
+.filter-stars {
+  color: #ffd740;
+}
+.rating-filter {
+  padding: 0 20px;
+}
+.warning-button {
+  padding-left: 20px;
+}

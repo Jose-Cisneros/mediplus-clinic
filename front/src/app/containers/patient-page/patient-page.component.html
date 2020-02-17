@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<section class="home_banner_area">
+
+            <div class="container">
+
+                    <app-patient-home-page
+                      *ngIf="patientStatusView.isHomeView">
+                    </app-patient-home-page>
+
+                    <app-patient-request-appointments
+                      *ngIf="patientStatusView.isRequestAppointmentView">
+                    </app-patient-request-appointments>
+
+                    <app-patient-select-specialist
+                      *ngIf="patientStatusView.isSelectSpecialist">
+                    </app-patient-select-specialist>
+
+                    <app-all-appointments-history
+                      *ngIf="patientStatusView.isAllAppointmentsHistory">
+                    </app-all-appointments-history>
+
+                    <app-patient-profile
+                      *ngIf="patientStatusView.isPatientProfile">
+                    </app-patient-profile>
+
+            </div>
+
+</section>
+
+<app-footer></app-footer>

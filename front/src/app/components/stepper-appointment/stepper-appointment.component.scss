@@ -1,0 +1,63 @@
+.tittle{
+  text-align: center;
+  font-size: 13px;
+}
+
+.form-patient-data{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.form-patient-comment{
+  width: 991px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.buttons{
+  margin-top: 15px;
+  text-align: right;
+}
+
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.stepper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.verificationCode{
+  width: 30% ;
+
+}
+
+.codeForm{
+  text-align: center;
+}
+
+.appointment{
+  margin-left: 2%;
+  margin-bottom: 2%;
+  width: 8%;
+}
+.secondForm{
+  width: 1000px;
+  justify-content: baseline;
+}
+.thirdForm{
+  width: 1000px;
+  justify-content: baseline;
+}
+
+.comment {
+  width: 991px;
+}

@@ -1,0 +1,11 @@
+<button (click)="goToHome()" class="home">Volver al inicio</button>
+<form (submit)="onSubmit()">
+  <div>
+    <span>Usted va  solicitar un turno para {{doctor.firstName + ' ' + doctor.lastName}}</span>
+    <br>
+    <span>Por favor, ingrese la fecha deseada</span>
+    <br>
+    <input type="date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}">
+    <button type="submit">Enviar solicitud de turno</button>
+  </div>
+</form>

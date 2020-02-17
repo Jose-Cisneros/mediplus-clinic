@@ -1,0 +1,72 @@
+<form class="profile-form">
+  <p>Informacion personal</p>
+  <div class="personal-data">
+    <mat-form-field class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre"  [(ngModel)]="user.name" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput placeholder="Apellido"  [(ngModel)]="user.lastName" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+  </div>
+  <div class="personal-data">
+    <mat-form-field class="full-width">
+      <mat-label>DNI</mat-label>
+      <input matInput placeholder="DNI"  [(ngModel)]="user.dni" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Seleccione la fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Nacimiento"  [(ngModel)]="user.birthDate" [ngModelOptions]="{ standalone: true }">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <p>Informacion de contacto</p>
+  <div class="tel-mail-data">
+    <mat-form-field class="full-width">
+      <mat-label>Nro de telefono</mat-label>
+      <span matPrefix>+54 &nbsp;</span>
+      <input type="tel" matInput placeholder="telefono" [(ngModel)]="user.phone" [ngModelOptions]="{ standalone: true }"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="emailFormControl" placeholder="Mail"/>
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Por favor ingrese un email valido
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Es <strong>obligatorio</strong> ingresar un email
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Guardar informacion</button>
+  </div>
+</form>
+<br />
+<form class="password-form">
+  <div class="change-password">
+    <mat-form-field class="full-width">
+      <mat-label>Contraseña actual</mat-label>
+      <input type="password" matInput />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Nueva contraseña</mat-label>
+      <input type="password" matInput />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Repita la nueva contraseña</mat-label>
+      <input type="password" matInput />
+    </mat-form-field>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Actualizar contraseña</button>
+  </div>
+</form>

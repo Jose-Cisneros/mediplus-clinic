@@ -1,0 +1,51 @@
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const config = require('./config/database');
+
+
+//Initialize our app variable
+const app = express();
+
+//Port
+const port = 3002;
+
+
+//midleware que permite cors
+app.use(cors());
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+
+// -------START CONTROLLERS---------------
+const pacientes = require('./controllers/patient');
+app.use('/pacientes', pacientes);
+
+const doctors = require('./controllers/doctor');
+app.use('/doctors', doctors);
+
+const appointments = require('./controllers/appointments');
+app.use('/appointments', appointments);
+
+const healthcare = require('./controllers/healthcare');
+app.use('/healthcare', healthcare);
+
+const auth = require('./controllers/auth');
+app.use('/auth', auth);
+// -------END CONTROLLERS-----------------
+
+
+
+// de aca levantamos el front ya buildeado
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.send('invalid page');
+})
+
+app.listen(port, () => {
+    console.log('Server levantado en puerto ' + port );
+});
