@@ -26,8 +26,7 @@ export class AllAppointmentsHistoryComponent implements OnInit {
     this.backService.getAllAppointmentsFromPatient().subscribe((appointment) => {
       this.loader = false;
       appointment.forEach((appoint: AppointmentResponse) => {
-        // la hora esta hardcodeada
-        this.allAppointmentslist.push(new Appointment(appoint._id, appoint.doctor.person.firstName, appoint.doctor.person.lastName, appoint.doctor.speciality, appoint.date, '10:30'))
+        this.allAppointmentslist.push(new Appointment(appoint._id, appoint.doctor.person.firstName, appoint.doctor.person.lastName, appoint.doctor.speciality, appoint.date, appoint.hour))
       });
     });
     console.log(this.allAppointmentslist);

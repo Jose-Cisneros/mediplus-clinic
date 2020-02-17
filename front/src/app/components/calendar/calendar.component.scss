@@ -1,0 +1,15 @@
+.appointment-history-header{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  margin-top: 25px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+.history{
+  height: 700px;
+  overflow-y: scroll;
+}
