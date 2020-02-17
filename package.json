@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
     "moment": "^2.24.0",
-    "mongoose": "~4.11.0",
+    "mongoose": "~5.9.1",
     "nodemon": "1.19.1",
     "request": "^2.88.0"
   },
