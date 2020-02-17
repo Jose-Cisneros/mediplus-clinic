@@ -25,7 +25,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   doctorsBySpecialist: Doctor[] = [];
   doctorsBySpecialistCopy: Doctor[] = [];
   loader = false;
-
+  speciality = '';
   obra_social = ['IOMA', 'OSDE', 'SWISS MEDICAL'];
   starArray = [1,2,3,4,5];
   myControl = new FormControl();
