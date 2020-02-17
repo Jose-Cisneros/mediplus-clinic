@@ -42,7 +42,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarAppointmentComponent } from './components/calendar-appointment/calendar-appointment.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -96,7 +96,8 @@ import { CalendarAppointmentComponent } from './components/calendar-appointment/
     MatTooltipModule,
     MatSelectModule,
     MatIconModule,
-    MatStepperModule
+    MatStepperModule,
+    MatAutocompleteModule
 
 
   ],

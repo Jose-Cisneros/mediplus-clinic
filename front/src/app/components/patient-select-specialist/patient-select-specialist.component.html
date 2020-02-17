@@ -1,4 +1,18 @@
 <span (click)="goToHome()" class="back-label">Volver al inicio</span>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Ejemplo Traumatologo</mat-label>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option *ngFor="let specialist of filteredOptions | async" [value]="specialist" (click)="onSelectedSpecialist(specialist)">
+        {{specialist}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+
 <h3 class="white-text">Primero selecciona la especialidad buscada</h3>
 <div class="buttons-container">
     <div *ngFor="let specialist of specialistArray">
