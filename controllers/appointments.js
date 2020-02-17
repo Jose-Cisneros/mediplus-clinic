@@ -3,6 +3,7 @@ const router = express.Router();
 const appointmentsList = require('../models/appointments');
 const axios = require('axios')
 const api_helper = require('./api_helper');
+const verifyToken = require('./tokenValidator');
 
 
 //GET HTTP method to /appointments
@@ -17,9 +18,8 @@ router.get('/',(req,res) => {
     })
 });
 
-router.get('/patient/:id',(req,res) => {    
-    let id = req.params.id;
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/patient/' + id)
+router.get('/patient', verifyToken,(req,res) => {    
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/patient/' + req.userId)
     .then(response => {
         res.json(response)
     })

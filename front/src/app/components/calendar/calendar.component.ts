@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppointmentResponse } from 'src/app/Responses/Appointments.response';
 import * as fromPatientVIewState from '../../containers/reducers/index';
+import { app } from 'firebase';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -14,7 +16,8 @@ import * as fromPatientVIewState from '../../containers/reducers/index';
 export class CalendarComponent implements OnInit {
 
   allAppointmentslist: Appointment[] = [];
-  today = new Date();
+  sorted: Appointment[] = [];
+  today = moment().format('DD-MM-YYYY');
   loader = false;
 
   constructor( private backService: BackService, private http: HttpClient,
@@ -22,15 +25,24 @@ export class CalendarComponent implements OnInit {
  ) { }
 
   ngOnInit() {
-    console.log(this.today);
+    console.log('la fecha de hoy es:' + this.today);
     this.allAppointmentslist = [];
     this.loader = true;
     this.backService.getAllAppointmentsFromPatient().subscribe((appointment) => {
       this.loader = false;
       appointment.forEach((appoint: AppointmentResponse) => {
-        this.allAppointmentslist.push(new Appointment(appoint._id, appoint.doctor.person.firstName, appoint.doctor.person.lastName, appoint.doctor.speciality, appoint.date, appoint.hour))
-      });
+        const appointDate = moment(appoint.date, 'DD-MM-YYYY').format('DD-MM-YYYY');
+        console.log('la fecha del turno es:' + appointDate);
+        if (this.today <= appointDate) {
+          // tslint:disable-next-line: max-line-length
+          this.allAppointmentslist.push(new Appointment(appoint._id, appoint.doctor.person.firstName, appoint.doctor.person.lastName, appoint.doctor.speciality, appoint.date, appoint.hour));
+        } else {
+          console.log('este turno ya paso');
+        }
+        });
     });
     console.log(this.allAppointmentslist);
+    // tslint:disable-next-line: max-line-length
   }
+
 }
