@@ -5,7 +5,7 @@
     <mat-label>Ejemplo Traumatologo</mat-label>
     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete" >
-      <mat-option *ngFor="let specialist of filteredOptions | async" [value]="specialist">
+      <mat-option *ngFor="let specialist of filteredOptions | async" [value]="specialist" (click)="onSelectedSpecialist(specialist)">
         {{specialist}}
       </mat-option>
     </mat-autocomplete>
