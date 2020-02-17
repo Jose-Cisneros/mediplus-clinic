@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import * as fromPatientVIewState from '../../containers/reducers/index';
 import { Appointment } from 'src/app/Models/appointment';
 import { BackService } from 'src/app/containers/services/back.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppointmentResponse } from 'src/app/Responses/Appointments.response';
+import * as fromPatientVIewState from '../../containers/reducers/index';
 
 @Component({
-  selector: 'app-all-appointments-history',
-  templateUrl: './all-appointments-history.component.html',
-  styleUrls: ['./all-appointments-history.component.scss']
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss']
 })
-export class AllAppointmentsHistoryComponent implements OnInit {
+export class CalendarComponent implements OnInit {
 
   allAppointmentslist: Appointment[] = [];
+  today = new Date();
   loader = false;
 
   constructor( private backService: BackService, private http: HttpClient,
@@ -21,6 +22,7 @@ export class AllAppointmentsHistoryComponent implements OnInit {
  ) { }
 
   ngOnInit() {
+    console.log(this.today);
     this.allAppointmentslist = [];
     this.loader = true;
     this.backService.getAllAppointmentsFromPatient().subscribe((appointment) => {
@@ -31,5 +33,4 @@ export class AllAppointmentsHistoryComponent implements OnInit {
     });
     console.log(this.allAppointmentslist);
   }
-
 }

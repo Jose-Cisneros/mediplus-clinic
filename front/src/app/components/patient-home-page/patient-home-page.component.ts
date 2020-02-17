@@ -22,4 +22,7 @@ export class PatientHomePageComponent implements OnInit {
   goToSelectSpecialist() {
     this.patientViewStore.dispatch(new PatientViewActions.SelectSpecialist);
   }
+  goToCalendar() {
+    this.patientViewStore.dispatch(new PatientViewActions.Calendar);
+  }
 }

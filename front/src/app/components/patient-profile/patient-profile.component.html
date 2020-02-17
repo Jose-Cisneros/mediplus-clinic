@@ -30,21 +30,6 @@
       <input type="tel" matInput placeholder="telefono" [(ngModel)]="user.phone" [ngModelOptions]="{ standalone: true }"/>
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput [formControl]="emailFormControl" placeholder="Mail"/>
-      <mat-error
-        *ngIf="
-          emailFormControl.hasError('email') &&
-          !emailFormControl.hasError('required')
-        "
-      >
-        Por favor ingrese un email valido
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Es <strong>obligatorio</strong> ingresar un email
-      </mat-error>
-    </mat-form-field>
   </div>
   <div class="buttons">
     <button mat-raised-button color="primary">Guardar informacion</button>
