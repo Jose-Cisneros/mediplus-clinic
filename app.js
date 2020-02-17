@@ -2,18 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const config = require('./config/database');
-
-
 //Initialize our app variable
 const app = express();
 
 //Port
 const port = 3002;
 
-// Connect mongoose to our database
-mongoose.connect(config.database);
 
 //midleware que permite cors
 app.use(cors());

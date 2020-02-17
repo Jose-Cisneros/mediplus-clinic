@@ -25,11 +25,9 @@ import { MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angula
 import { BackService } from './containers/services/back.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppointmentHistoryComponent } from './components/appointment-history/appointment-history.component';
-import { CommentComponent } from './components/comment/comment.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import * as $ from 'jquery';
-import { RatingModule } from 'ng-starrating';
 import { AllAppointmentsHistoryComponent } from './components/all-appointments-history/all-appointments-history.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -59,7 +57,6 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
     AppointmentRequestComponent,
     FooterComponent,
     AppointmentHistoryComponent,
-    CommentComponent,
     AllAppointmentsHistoryComponent,
     SingInComponent,
     LogInComponent,
@@ -88,7 +85,6 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
     BrowserAnimationsModule,
     MatMenuModule,
     AppRoutingModule,
-    RatingModule,
     MatTooltipModule,
     MatSelectModule,
     MatIconModule,
@@ -104,7 +100,6 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
   ],
   entryComponents: [
     AppointmentRequestComponent,
-    CommentComponent
   ],
 })
 export class AppModule { }

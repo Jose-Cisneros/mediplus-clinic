@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDatepickerModule } from '@angular/material';
-import { CommentComponent } from '../comment/comment.component';
 import { Appointment } from 'src/app/Models/appointment';
 
 @Component({
@@ -20,11 +19,4 @@ export class AppointmentHistoryComponent implements OnInit {
       this.showCommentComponent = false;
     }
 
-  comment(): void {
-    const dialogRef = this.dialog.open(CommentComponent, {});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
 }
