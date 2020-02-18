@@ -13,7 +13,7 @@ const verifyToken = require('./tokenValidator');
 //GET HTTP method to /pacientes
 router.get('/specialist/:specialistName',(req,res) => {
     let specialistName = req.params.specialistName;
-    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/speciality/' + specialistName)
+    api_helper.make_API_call('http://localhost:3001/vr/api/clinic/doctors/'+ '5e4b4ade5ec3923254a8daea'+ '/' + specialistName)
     .then(response => {
         res.json(response)
     })

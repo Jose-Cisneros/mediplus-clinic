@@ -11,6 +11,7 @@
 
 
 export interface DoctorResponse {
+  doctor: any;
   person: Person;
   speciality: string;
   _id: string;

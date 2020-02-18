@@ -29,7 +29,6 @@ import { CommentComponent } from './components/comment/comment.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import * as $ from 'jquery';
-import { RatingModule } from 'ng-starrating';
 import { AllAppointmentsHistoryComponent } from './components/all-appointments-history/all-appointments-history.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -40,6 +39,7 @@ import { PhoneAuthComponent } from './components/phone-auth/phone-auth.component
 import { StepperAppointmentComponent } from './components/stepper-appointment/stepper-appointment.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -88,11 +88,11 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
     BrowserAnimationsModule,
     MatMenuModule,
     AppRoutingModule,
-    RatingModule,
     MatTooltipModule,
     MatSelectModule,
     MatIconModule,
-    MatStepperModule
+    MatStepperModule,
+    MatAutocompleteModule
 
 
   ],
