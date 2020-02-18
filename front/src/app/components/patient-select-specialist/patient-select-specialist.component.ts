@@ -67,7 +67,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
     this.backService.getBySpeciality(specialistName).subscribe((doctors) => {
       this.loader = false;
       doctors.forEach((doc: DoctorResponse) => {
-        this.doctorsBySpecialist.push(new Doctor(doc._id, doc.doctor.person.birthDate,
+        this.doctorsBySpecialist.push(new Doctor(doc.doctor._id, doc.doctor.person.birthDate,
            doc.doctor.person.dni, doc.doctor.person.firstName, doc.doctor.person.lastName,
            doc.doctor.person.phone, doc.doctor.speciality, doc.doctor.prepaid , 3 ));
       });

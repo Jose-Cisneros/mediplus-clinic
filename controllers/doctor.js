@@ -22,18 +22,18 @@ router.get('/specialist/:specialistName',(req,res) => {
     });
 });
 
-router.get('/specialist/:specialistName',(req,res) => {
-// let specialist = req.body.specialist;
-    console.log(req.params.specialistName); 
-    Doctor.find({gender:'Man'}, (err, lists) => {
-        if (err) {
-            res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
-        } else {
-            res.write(JSON.stringify({success: true, lists:lists},null,2));
-            res.end();
-        }
-    })
-});
+// router.get('/specialist/:specialistName',(req,res) => {
+// // let specialist = req.body.specialist;
+//     console.log(req.params.specialistName); 
+//     Doctor.find({gender:'Man'}, (err, lists) => {
+//         if (err) {
+//             res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
+//         } else {
+//             res.write(JSON.stringify({success: true, lists:lists},null,2));
+//             res.end();
+//         }
+//     })
+// });
 
 
 router.post('/request-appointment', (req,res,next) => {

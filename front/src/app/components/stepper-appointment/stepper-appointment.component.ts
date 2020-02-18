@@ -34,6 +34,7 @@ export class StepperAppointmentComponent implements OnInit {
   turn = new Turn();
 
 
+
   constructor(private _formBuilder: FormBuilder,
               private appointmentService: AppointmentService,
               private backService: BackService,
@@ -79,7 +80,7 @@ export class StepperAppointmentComponent implements OnInit {
   });
     moment.locale('es');
     this.getNextAppointment();
-    console.log(this.user);
+    this.newUser.prepaid = '';
   }
 
 getNextAppointment() {
@@ -179,7 +180,8 @@ verifyLoginCode() {
 getCurrentUser() {
   this.auth.currentUser().subscribe(
     data => {
-      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone, data.person.birthDate, data.person.dni);
+      this.user = new User(data._id, data.person.firstName, data.person.lastName,
+        data.person.phone, data.person.birthDate, data.person.dni);
     },
   );
 }

@@ -51,8 +51,12 @@
             <input matInput  placeholder="Apellido" [(ngModel)]="newUser.lastName"  [ngModelOptions]="{ standalone: true }" >
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Obra social</mat-label>
-            <input matInput  placeholder="Obra social">
+            <mat-label>Obra Social</mat-label>
+            <mat-select  [(ngModel)]="newUser.prepaid" [ngModelOptions]="{ standalone: true }">
+              <mat-option *ngFor="let prepaid of data.doctor._prepaid"  [value]="prepaid.name" >
+                {{prepaid.name}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
