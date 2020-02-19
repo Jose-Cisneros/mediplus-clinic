@@ -24,7 +24,7 @@ export class Doctor {
   public set speciality(value: string) {
     this._speciality = value;
   }
-  private _id: string;
+  public _id: string;
   public get id(): string {
     return this._id;
   }

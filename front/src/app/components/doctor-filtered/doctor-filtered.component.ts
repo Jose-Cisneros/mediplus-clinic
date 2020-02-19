@@ -39,6 +39,7 @@ export class DoctorFilteredComponent implements OnInit {
     });
   }
   goToDoctorSelected() {
+    localStorage.setItem('doctorSelected', this.doctor._id);
     this.patientViewStore.dispatch(new PatientViewActions.DoctorSelected);
 
   }

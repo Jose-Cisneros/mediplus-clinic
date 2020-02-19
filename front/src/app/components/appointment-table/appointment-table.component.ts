@@ -27,11 +27,14 @@ export class AppointmentTableComponent implements OnInit {
   AppointmentInfo: AppointmentInfo ;
   durationInSeconds = 3;
   loading = true;
+  doctorSelected = '';
   constructor (private service: AppointmentService,
                ) { }
 
   ngOnInit() {
-   this.getPendingAppointments('5e4883a9a90efa23dca7c549');
+  this.doctorSelected =  localStorage.getItem('doctorSelected');
+  localStorage.removeItem('doctorSelected;');
+   this.getPendingAppointments(this.doctorSelected);
 
   }
 
@@ -59,7 +62,7 @@ export class AppointmentTableComponent implements OnInit {
       data => {
         if ( data.success = true) {
 
-          this.getPendingAppointments('5e4883a9a90efa23dca7c549');
+          this.getPendingAppointments(this.doctorSelected);
         }
         console.log(data);
       });
@@ -70,7 +73,7 @@ export class AppointmentTableComponent implements OnInit {
         data => {
           if ( data.success = true) {
 
-            this.getPendingAppointments('5e4883a9a90efa23dca7c549');
+            this.getPendingAppointments(this.doctorSelected);
           }
           console.log(data);
         });

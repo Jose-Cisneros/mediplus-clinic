@@ -1,7 +1,6 @@
 <div class="doctor">
-  <div class="doctor-photo" (click)="goToDoctorSelected()" >
+  <div class="doctor-photo"  >
   </div>
-  <button (click)="goToDoctorSelected()">perfil</button>
   <div class="doctor-info">
       <span>Dr. {{doctor.firstname + ' ' + doctor.lastname}} </span>
       <span>Especialidad: {{doctor.speciality}}</span>
@@ -10,7 +9,8 @@
     <span>Telefono de contacto: </span>
     <span>{{doctor.phone}}</span>
   </div>
-  <div class="button">
-      <button (click)="requestAppointment()" mat-raised-button color="primary">Solicitar turno</button>
+  <div class="buttons">
+      <button (click)="requestAppointment()" class="button" mat-raised-button color="primary">Solicitar turno</button>
+      <button type="button" class="btn btn-primary button" (click)="goToDoctorSelected()">Pendientes</button>
   </div>
 </div>
