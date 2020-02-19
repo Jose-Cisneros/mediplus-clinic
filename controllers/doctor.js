@@ -184,7 +184,7 @@ router.post('/ApproveAppointment/:id',(req,res) => {
 
 
 router.get('/PendingAppointments/:id' , (req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/' + req.params.id)
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/' + req.params.id)
     .then(response => {
         res.status(200).json(response)
         console.log(response)

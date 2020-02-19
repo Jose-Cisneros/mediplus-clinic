@@ -68,3 +68,13 @@ margin-left: 45%;
 
 
 }
+
+.approved{
+  font-weight: bold;
+  color: green;
+}
+
+.rejected{
+  font-weight: bold;
+ color: red;
+}

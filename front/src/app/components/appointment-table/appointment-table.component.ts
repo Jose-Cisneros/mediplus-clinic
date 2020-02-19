@@ -49,7 +49,7 @@ export class AppointmentTableComponent implements OnInit {
        data.forEach(element => {
          console.log(element);
         ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
-                         element.date, element.hour, element._id ));
+                         element.date, element.hour, element._id, element.rejected, element.approved ));
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
        this.loading = false;
@@ -78,7 +78,6 @@ export class AppointmentTableComponent implements OnInit {
           console.log(data);
         });
       }
-
 
 
 
