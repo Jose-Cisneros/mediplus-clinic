@@ -1,9 +1,20 @@
 @media (min-width: 1px){
   .home-page-container{
     height: 500px;
+    padding-top: 100px;
 
     h1 {
-      color: white;
+      color: darkolivegreen;
+    }
+    .header-text {
+      background-color: #ffffff;
+      border: solid 1px darkolivegreen;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0 250px 0 100px;
+      -webkit-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
+      -moz-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
+      box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
     }
   }
   .buttons-container {
@@ -12,22 +23,39 @@
     height: 70%;
     width: 100%;
     justify-content: space-around;
-    padding-top: 20%;
+    padding-top:10%;
+  }
+
+  .button-title {
+    color: darkolivegreen;
+    font-size: 22px;
+  }
+
+  .button-description {
+    color: gray;
+    font-size: 15px;
   }
   .home-button {
-    background-color:rgb(94, 134, 172);
+    -webkit-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
     width: 100%;
     height: 95px;
     border-radius: 8px;
+    border: solid 1px #00000026;
+    background-color: white;
+    -webkit-transition: all 7s ease-in-out;
+    transition: all 7s ease-in-out;
   }
   .button-content {
-    color: white;
     font-weight: 550;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
 }
 @media(min-width: 768px) {
@@ -42,4 +70,23 @@
   width: 30%;
 }
 
+}
+
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

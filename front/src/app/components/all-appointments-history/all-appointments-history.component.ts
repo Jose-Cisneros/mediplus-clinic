@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as fromPatientVIewState from '../../containers/reducers/index';
 import { Appointment } from 'src/app/Models/appointment';
 import { BackService } from 'src/app/containers/services/back.service';
+import * as fromPatientVIewState from '../../containers/reducers/index';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppointmentResponse } from 'src/app/Responses/Appointments.response';
@@ -32,5 +33,10 @@ export class AllAppointmentsHistoryComponent implements OnInit {
     });
     console.log(this.allAppointmentslist);
   }
+
+  goToHome = () => {
+    this.patientViewStore.dispatch(new PatientViewActions.Home);
+  }
+
 
 }

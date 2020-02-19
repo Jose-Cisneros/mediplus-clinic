@@ -78,6 +78,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   }
 
 
+
   starArrayBuilder(n: number) {
     return new Array(n);
   }
