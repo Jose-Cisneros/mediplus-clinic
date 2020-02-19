@@ -87,12 +87,15 @@
 
 
     </div>
-    <form [formGroup]="thirdFormGroup" class="verfyDataButtons">
+    <form [formGroup]="thirdFormGroup" class="verfyDataButtons" *ngIf="!created">
 
           <button mat-button matStepperPrevious>Volver</button>
           <button mat-button (click)="requetsAppointmentAndCreateUser()">Aprobar turno</button>
 
     </form>
+  <div *ngIf="created" >
+    <p class="success" >turno creado correctamente!!</p>
+  </div>
   </mat-step>
 </mat-horizontal-stepper>
 

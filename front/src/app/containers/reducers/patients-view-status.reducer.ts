@@ -7,6 +7,7 @@ export interface State {
   isSelectSpecialist: boolean;
   isAllAppointmentsHistory: boolean;
   isPatientProfile: boolean;
+  isDoctorSelected: boolean;
 }
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   isSelectSpecialist: false,
   isAllAppointmentsHistory: false,
   isPatientProfile: false,
+  isDoctorSelected: false,
 };
 
 type ActionsType =
@@ -32,6 +34,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
         isPatientProfile: false,
+        isDoctorSelected: false,
       };
     }
     case PatientViewActionTypes.RequestAppointment: {
@@ -43,6 +46,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
         isPatientProfile: false,
+        isDoctorSelected: false,
 
       };
     }
@@ -55,6 +59,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
         isPatientProfile: false,
+        isDoctorSelected: false,
 
       };
     }
@@ -67,6 +72,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: true,
         isAllAppointmentsHistory: false,
         isPatientProfile: false,
+        isDoctorSelected: false,
       };
     }
     case PatientViewActionTypes.AllAppointmentsHistory: {
@@ -78,6 +84,7 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: false,
         isAllAppointmentsHistory: true,
         isPatientProfile: false,
+        isDoctorSelected: false,
       };
     }
     case PatientViewActionTypes.PatientProfile: {
@@ -89,6 +96,20 @@ export function reducer( state = initialState, action: ActionsType): State {
         isSelectSpecialist: false,
         isAllAppointmentsHistory: false,
         isPatientProfile: true,
+        isDoctorSelected: false,
+      };
+    }
+
+    case PatientViewActionTypes.DoctorSelected: {
+      return {
+        ...state,
+        isHomeView: false,
+        isRequestAppointmentView: false,
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: false,
+        isAllAppointmentsHistory: false,
+        isPatientProfile: false,
+        isDoctorSelected: true,
       };
     }
     default: {

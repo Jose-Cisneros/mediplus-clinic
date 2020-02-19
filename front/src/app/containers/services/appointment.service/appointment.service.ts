@@ -15,4 +15,18 @@ export class AppointmentService {
  getOnDay(id: string, date: string) {
    return this.httpClient.get('/doctors/onDay/' + id + '/' + date );
  }
+
+ getPendingAppointments( id: string): Observable<any> {
+  return this.httpClient.get('/doctors/PendingAppointments/' + id);
+}
+
+approveAppointment( id: string ): Observable<any> {
+  return this.httpClient.post('/doctors/ApproveAppointment/' + id, {});
+}
+
+
+rejectAppointment( id: string ): Observable<any> {
+  return this.httpClient.post('/doctors/rejectAppointment/' + id, {});
+}
+
 }

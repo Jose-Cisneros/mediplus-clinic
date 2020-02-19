@@ -24,6 +24,10 @@
                       *ngIf="patientStatusView.isPatientProfile">
                     </app-patient-profile>
 
+                    <app-pending-appointment
+                    *ngIf="patientStatusView.isDoctorSelected">
+                  </app-pending-appointment>
+
             </div>
 
 </section>

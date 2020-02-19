@@ -32,6 +32,7 @@ export class StepperAppointmentComponent implements OnInit {
   nextDay = new Date();
   selectedDay = new Date();
   turn = new Turn();
+  created: boolean;
 
 
 
@@ -81,6 +82,7 @@ export class StepperAppointmentComponent implements OnInit {
     moment.locale('es');
     this.getNextAppointment();
     this.newUser.prepaid = '';
+    this.created = false;
   }
 
 getNextAppointment() {
@@ -136,6 +138,7 @@ this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, th
       this.newUser.id = res.user._id;
       this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
         result => {
+          this.created = true;
           console.log(result);
         },
         (err) => console.log(err)

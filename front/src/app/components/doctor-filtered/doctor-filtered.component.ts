@@ -8,6 +8,8 @@ import { AppointmentRequestComponent } from '../appointment-request/appointment-
 import { Doctor } from 'src/app/Models/doctor';
 import { stringify } from '@angular/core/src/util';
 
+
+
 @Component({
   selector: 'app-doctor-filtered',
   templateUrl: './doctor-filtered.component.html',
@@ -19,7 +21,8 @@ export class DoctorFilteredComponent implements OnInit {
   showRequestComponent: boolean;
 
   constructor(
-    public dialog: MatDialog ) { }
+    public dialog: MatDialog,  private patientViewStore: Store<fromPatientVIewState.State>
+     ) { }
 
   ngOnInit() {
     this.showRequestComponent = false;
@@ -34,5 +37,9 @@ export class DoctorFilteredComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+  goToDoctorSelected() {
+    this.patientViewStore.dispatch(new PatientViewActions.DoctorSelected);
+
   }
 }

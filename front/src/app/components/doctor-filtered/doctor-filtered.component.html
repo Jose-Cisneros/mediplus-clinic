@@ -1,6 +1,7 @@
 <div class="doctor">
-  <div class="doctor-photo">
+  <div class="doctor-photo" (click)="goToDoctorSelected()" >
   </div>
+  <button (click)="goToDoctorSelected()">perfil</button>
   <div class="doctor-info">
       <span>Dr. {{doctor.firstname + ' ' + doctor.lastname}} </span>
       <span>Especialidad: {{doctor.speciality}}</span>

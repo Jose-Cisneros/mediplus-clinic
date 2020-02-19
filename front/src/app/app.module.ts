@@ -40,7 +40,10 @@ import { StepperAppointmentComponent } from './components/stepper-appointment/st
 import {MatStepperModule} from '@angular/material/stepper';
 import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { PendingAppointmentComponent } from './components/pending-appointment/pending-appointment.component';
+import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 
 
@@ -66,7 +69,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     StepperAppointmentComponent,
     PatientProfileComponent,
     PhoneAuthComponent,
-    StepperAppointmentComponent
+    StepperAppointmentComponent,
+    PendingAppointmentComponent,
+    AppointmentTableComponent,
+    SnackbarComponent,
 
   ],
   imports: [
@@ -92,7 +98,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSelectModule,
     MatIconModule,
     MatStepperModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
 
 
   ],
