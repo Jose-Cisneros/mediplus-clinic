@@ -58,7 +58,7 @@ export class AppointmentTableComponent implements OnInit {
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
        this.dataSourceAux = new MatTableDataSource(ELEMENT_DATA);
        this.loading = false;
-       console.log(ELEMENT_DATA);
+       this.applyFilters();
       });
     }
 
@@ -80,7 +80,7 @@ export class AppointmentTableComponent implements OnInit {
 
             this.getPendingAppointments(this.doctorSelected);
           }
-          console.log(data);
+
         });
       }
 
