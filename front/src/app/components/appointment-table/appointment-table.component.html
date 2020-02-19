@@ -2,6 +2,9 @@
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Aplicar filtro">
 </mat-form-field>
 
+<mat-slide-toggle class="slide" color="primary" style="color: green" [(ngModel)]="slides.approved" (change)="applyFilters()">Aprobados</mat-slide-toggle>
+<mat-slide-toggle class="slide" color= "warn"  style="color: red"  [(ngModel)]="slides.rejected" (change)="applyFilters()">Rechazados</mat-slide-toggle>
+<mat-slide-toggle class="slide" [(ngModel)]="slides.pending" style="color: yellow" (change)="applyFilters()">Pendientes</mat-slide-toggle>
 <table mat-table
      [dataSource]="dataSource" multiTemplateDataRows
      class="mat-elevation-z8">
@@ -44,7 +47,7 @@
         <div class="example-element-symbol"> {{element.photo}} </div>
       </div>
       <div class="example-element-description">
-        {{element.info}}
+        {{element.observation}}
       </div>
     </div>
   </td>

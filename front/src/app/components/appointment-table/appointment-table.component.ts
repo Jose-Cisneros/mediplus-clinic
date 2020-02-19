@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { SnackbarComponent } from './../snackbar/snackbar.component';
 import { AppointmentService } from './../../containers/services/appointment.service/appointment.service';
 import {Component, OnInit} from '@angular/core';
@@ -22,12 +23,15 @@ import { AppointmentInfo } from '../../models/appointmentInfo';
 
 export class AppointmentTableComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSourceAux = new MatTableDataSource(ELEMENT_DATA);
   columnsToDisplay = ['name', 'day', 'hour', 'options'];
   expandedElement: AppointmentInfo | null;
   AppointmentInfo: AppointmentInfo ;
   durationInSeconds = 3;
   loading = true;
   doctorSelected = '';
+  slides = new FilterSlides();
+  rejected = true;
   constructor (private service: AppointmentService,
                ) { }
 
@@ -49,9 +53,10 @@ export class AppointmentTableComponent implements OnInit {
        data.forEach(element => {
          console.log(element);
         ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
-                         element.date, element.hour, element._id, element.rejected, element.approved ));
+                         element.date, element.hour, element._id, element.rejected, element.approved, element.observation ));
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+       this.dataSourceAux = new MatTableDataSource(ELEMENT_DATA);
        this.loading = false;
        console.log(ELEMENT_DATA);
       });
@@ -80,7 +85,33 @@ export class AppointmentTableComponent implements OnInit {
       }
 
 
+      applyFilters() {
+        this.dataSource.data = this.dataSourceAux.data;
+       if (!this.slides.pending ) {
+        this.dataSource.data = this.dataSource.data.filter(turn => !(turn.rejected === false && turn.approved === false));
+       }
+       if (!this.slides.approved ) {
+        this.dataSource.data = this.dataSource.data.filter(turn => turn.approved === false);
+
+       }
+       if (!this.slides.rejected) {
+        this.dataSource.data = this.dataSource.data.filter(turn => turn.rejected === false);
+       }
+      }
+
+
 
   }
 
 
+  export class  FilterSlides {
+    approved: boolean;
+    rejected: boolean;
+    pending: boolean;
+
+    constructor() {
+      this.approved = true;
+      this.rejected = true;
+      this.pending = true;
+    }
+  }

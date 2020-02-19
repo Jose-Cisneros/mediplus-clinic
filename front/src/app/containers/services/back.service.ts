@@ -19,12 +19,13 @@ export class BackService {
   }
 
   // se utiliza para crear un turno cuando no se tiene un paciente logueado
-  requetsAppointment(doctorId: string, patientId: string, date: string, hour: string): Observable<any> {
+  requetsAppointment(doctorId: string, patientId: string, date: string, hour: string, observation: string): Observable<any> {
     return this.httpClient.post('/doctors/request-appointment', {
       doctor_id: doctorId,
       patient_id: patientId,
       date: date,
-      hour: hour
+      hour: hour,
+      observation: observation
     });
   }
 // se utiliza para crear un turno cuando  se tiene un paciente logueado

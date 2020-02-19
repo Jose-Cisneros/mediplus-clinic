@@ -136,7 +136,8 @@ this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, th
   this.backService.createPatient(this.newUser).subscribe(
    res => {
       this.newUser.id = res.user._id;
-      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
+      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date,
+          this.turn.hour, this.turn.observation ).subscribe(
         result => {
           this.created = true;
           console.log(result);
@@ -208,4 +209,5 @@ export class Date {
 export class Turn {
   date: string;
   hour: string;
+  observation: string;
 }

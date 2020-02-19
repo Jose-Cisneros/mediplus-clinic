@@ -44,6 +44,8 @@ import { PendingAppointmentComponent } from './components/pending-appointment/pe
 import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 
@@ -99,7 +101,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     MatIconModule,
     MatStepperModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSlideToggleModule
 
 
   ],
