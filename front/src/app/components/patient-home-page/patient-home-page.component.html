@@ -1,14 +1,16 @@
 <div class="home-page-container">
-  <h1>Bienvenido de nuevo, Agustin</h1>
+  <h1 class="header-text">Clinica San Juan de Dios </h1>
   <div class="buttons-container">
-    <div class="home-button">
-      <span (click)="goToSelectSpecialist()" class="button-content"> Buscar especialistas </span>
+    <div class="home-button hvr-grow-shadow">
+      <div (click)="goToSelectSpecialist()" class="button-content"> 
+        <span class="button-title">Especialistas</span>
+        <span class="button-description">Administar y asignar turnos</span>
+      </div>
     </div>
-    <div class="home-button">
-      <span class="button-content"> Mi calendario </span>
-    </div>
-    <div class="home-button">
-        <span (click)="goToAllAppointmentsHistory()" class="button-content"> Historial de turnos </span>
+    <div class="home-button hvr-grow-shadow">
+        <div (click)="goToAllAppointmentsHistory()" class="button-content"> 
+          <div class="button-title">Historial</div>
+          <div class="button-description">Ver turnos pasados y presentes</div> 
       </div>
   </div>
 <div>

@@ -6,6 +6,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import { element } from '@angular/core/src/render3/instructions';
 import { AppointmentInfo } from '../../models/appointmentInfo';
+import * as fromPatientVIewState from '../../containers/reducers/index';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
+import { Store } from '@ngrx/store';
 
  let ELEMENT_DATA: AppointmentInfo[] = [ ] ;
 @Component({
@@ -33,6 +36,7 @@ export class AppointmentTableComponent implements OnInit {
   slides = new FilterSlides();
   rejected = true;
   constructor (private service: AppointmentService,
+    private patientViewStore: Store<fromPatientVIewState.State>
                ) { }
 
   ngOnInit() {
@@ -97,6 +101,10 @@ export class AppointmentTableComponent implements OnInit {
        if (!this.slides.rejected) {
         this.dataSource.data = this.dataSource.data.filter(turn => turn.rejected === false);
        }
+      }
+
+      goToSearch() {
+        this.patientViewStore.dispatch(new PatientViewActions.SelectSpecialist);
       }
 
 
