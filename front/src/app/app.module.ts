@@ -114,7 +114,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
   ],
   entryComponents: [
     AppointmentRequestComponent,
-    CommentComponent
+    CommentComponent,
+    StepperAppointmentComponent
   ],
 })
 export class AppModule { }

@@ -40,7 +40,7 @@
     <div class="stepper">
       <ng-template matStepLabel>Ingrese sus datos</ng-template>
      <!-- formulario si no hay usuario logueado, se debe crear un nuevo paciente -->
-      <form [formGroup]="secondFormGroup" class="secondForm" *ngIf="!user">
+      <form [formGroup]="secondFormGroup" class="secondForm" >
         <div class="form-patient-data" >
           <mat-form-field>
             <mat-label>Nombre</mat-label>
@@ -84,7 +84,6 @@
       <p class="dataVerification"> <a class="data"> Doctor: </a> {{data.doctor._firstname}} {{data.doctor._lastname}}</p>
       <p class="dataVerification"> <a class="data">Paciente: </a> {{newUser.name}} {{newUser.lastName}}   </p>
       <p class="dataVerification"> <a class="data">Turno: </a> {{turn.date}}  -  {{turn.hour}} hs </p>
-
 
     </div>
     <form [formGroup]="thirdFormGroup" class="verfyDataButtons" *ngIf="!created">

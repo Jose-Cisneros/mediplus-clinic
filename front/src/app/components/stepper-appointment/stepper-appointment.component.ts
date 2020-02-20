@@ -65,7 +65,6 @@ export class StepperAppointmentComponent implements OnInit {
       appId: '1:97310092855:web:58d311125ec2b22a2819b2',
       measurementId: 'G-RC49PHRXG9'
     };
-    this.getCurrentUser();
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     this.windowRef = this.windowService.windowRef;
