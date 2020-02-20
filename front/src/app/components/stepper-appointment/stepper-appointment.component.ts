@@ -11,6 +11,9 @@ import { PhoneNumber } from './../../Models/phone';
 import { WindowService } from './../../containers/services/window.service/window.service';
 import * as firebase from 'firebase';
 import { User } from 'src/app/Models/user';
+import * as fromPatientVIewState from '../../containers/reducers/index';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -41,6 +44,7 @@ export class StepperAppointmentComponent implements OnInit {
               private backService: BackService,
               public dialogRef: MatDialogRef<AppointmentRequestComponent>,
               private windowService: WindowService,
+              private patientViewStore: Store<fromPatientVIewState.State>,
               private auth: AuthService,
              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -194,6 +198,11 @@ selectTurn( date: string, hour: string ) {
   this.turn.date = date;
   this.turn.hour = hour;
 
+}
+
+home(){
+  this.patientViewStore.dispatch(new PatientViewActions.Home);
+  this.dialogRef.close()
 }
 
 
