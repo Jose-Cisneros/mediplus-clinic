@@ -10,7 +10,7 @@ const config = require('./config/database');
 const app = express();
 
 //Port
-const port = 3002;
+const port = 3003;
 
 
 //midleware que permite cors
