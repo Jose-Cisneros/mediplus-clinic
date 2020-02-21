@@ -85,9 +85,12 @@ export class PatientSelectSpecialistComponent implements OnInit {
           prepaid.push(pp.name);
         });
 
-        this.doctorsBySpecialist.push(new Doctor(doc.doctor._id, doc.doctor.person.birthDate,
-           doc.doctor.person.dni, doc.doctor.person.firstName, doc.doctor.person.lastName,
-           doc.doctor.person.phone, doc.doctor.speciality, prepaid , 3 ));
+        let docAux: Doctor = new Doctor(doc.doctor._id, doc.doctor.person.birthDate,
+          doc.doctor.person.dni, doc.doctor.person.firstName, doc.doctor.person.lastName,
+          doc.doctor.person.phone, doc.doctor.speciality, prepaid , 3 );
+          
+          docAux.profileUrl = doc.doctor.profileUrl;
+        this.doctorsBySpecialist.push(docAux);
       });
     this.doctorsBySpecialistCopy = this.doctorsBySpecialist;
     });
