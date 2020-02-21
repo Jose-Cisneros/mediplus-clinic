@@ -17,6 +17,18 @@ router.get('/',(req,res) => {
     })
 });
 
+//GET HTTP method to /pacientes
+router.get('/allPrepaids',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/auth/allPrepaids')
+        .then(response => {
+            res.json(response)
+        })
+        .catch(error => {
+            res.send(error)
+        });
+    });
+
+
 //POST HTTP method to /pacientes
 
 router.post('/', (req,res,next) => {

@@ -50,6 +50,7 @@ export class BackService {
     });
   }
 
-
-
+  getHealthCares( ): Observable<any> {
+    return this.httpClient.get('/healthcare/allPrepaids');
+  }
 }

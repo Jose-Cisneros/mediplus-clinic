@@ -14,8 +14,15 @@ export interface DoctorResponse {
   doctor: any;
   person: Person;
   speciality: string;
+  prepaid: HealthCareResponse[],
   _id: string;
 }
+
+export interface HealthCareResponse {
+  _id: string;
+  name: string;
+}
+
 
 export interface Person {
   birthDate: string;

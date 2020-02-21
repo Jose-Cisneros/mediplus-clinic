@@ -10,6 +10,7 @@ import { Doctor } from 'src/app/Models/doctor';
 import { DoctorResponse } from 'src/app/Responses/Doctors.response';
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import { HealthCare } from 'src/app/Models/healthCare';
 
 
 
@@ -32,6 +33,9 @@ export class PatientSelectSpecialistComponent implements OnInit {
   selectedOs = '';
   selectedRating;
   filterApplied = false;
+
+  healthCares: HealthCare[] = [];
+
 
   filteredOptions: Observable<string[]>;
 
@@ -60,6 +64,14 @@ export class PatientSelectSpecialistComponent implements OnInit {
     this.patientViewStore.dispatch(new PatientViewActions.Home);
   }
 
+  getAllHealthCares() {
+    this.backService.getHealthCares().subscribe((healthCare) => {
+      healthCare.forEach((healt) => {
+        this.healthCares.push(new HealthCare(healt._id, healt.name));
+      });
+    });
+  }
+
   onSelectedSpecialist = (specialistName: string): void => {
 
     this.doctorsBySpecialist = [];
@@ -67,9 +79,15 @@ export class PatientSelectSpecialistComponent implements OnInit {
     this.backService.getBySpeciality(specialistName).subscribe((doctors) => {
       this.loader = false;
       doctors.forEach((doc: DoctorResponse) => {
+
+        const prepaid: string[] = [];
+        doc.doctor.prepaid.forEach(pp => {
+          prepaid.push(pp.name);
+        });
+
         this.doctorsBySpecialist.push(new Doctor(doc.doctor._id, doc.doctor.person.birthDate,
            doc.doctor.person.dni, doc.doctor.person.firstName, doc.doctor.person.lastName,
-           doc.doctor.person.phone, doc.doctor.speciality, doc.doctor.prepaid , 3 ));
+           doc.doctor.person.phone, doc.doctor.speciality, prepaid , 3 ));
       });
     this.doctorsBySpecialistCopy = this.doctorsBySpecialist;
     });
