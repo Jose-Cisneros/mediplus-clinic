@@ -133,14 +133,6 @@
     </div>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
-<<<<<<< HEAD
-    <ng-template matStepLabel >Verifique los datos</ng-template>
-    <div >
-      <p class="dataVerification"> <a class="data"> Doctor: </a> {{data.doctor._firstname}} {{data.doctor._lastname}}</p>
-      <p class="dataVerification"> <a class="data">Paciente: </a> {{newUser.name}} {{newUser.lastName}}   </p>
-      <p class="dataVerification"> <a class="data">Turno: </a> {{turn.date}}  -  {{turn.hour}} hs </p>
-
-=======
     <ng-template matStepLabel>Verifique los datos</ng-template>
     <div>
       <p class="dataVerification">
@@ -153,7 +145,6 @@
       <p class="dataVerification">
         <a class="data">Turno: </a> {{ turn.date }} - {{ turn.hour }} hs
       </p>
->>>>>>> fc9c7537d79711a02cefd25cba0ef3080df902eb
     </div>
     <form
       [formGroup]="thirdFormGroup"
