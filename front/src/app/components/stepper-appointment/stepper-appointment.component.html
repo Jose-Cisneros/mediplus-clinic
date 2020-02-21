@@ -87,20 +87,40 @@
               [ngModelOptions]="{ standalone: true }"
             />
           </mat-form-field>
-          <mat-form-field>
-            <mat-label>Obra Social</mat-label>
-            <mat-select
-              [(ngModel)]="newUser.prepaid"
-              [ngModelOptions]="{ standalone: true }"
-            >
-              <mat-option
-                *ngFor="let prepaid of data.doctor._prepaid"
-                [value]="prepaid"
+          <div *ngIf="data.doctor._prepaid.length > 0">
+            <mat-form-field >
+              <mat-label>Obra Social</mat-label>
+              <mat-select
+                [(ngModel)]="newUser.prepaid"
+                [ngModelOptions]="{ standalone: true }"
               >
-                {{ prepaid }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+                <mat-option
+                  *ngFor="let prepaid of data.doctor._prepaid"
+                  [value]="prepaid"
+                >
+                  {{ prepaid }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="!(data.doctor._prepaid.length > 0)">
+            <mat-form-field >
+              <mat-label> Obra social</mat-label>
+              <mat-select
+                matTooltip="El doctor no trabaja con obra Social"
+                [(ngModel)]="newUser.prepaid"
+                [ngModelOptions]="{ standalone: true }"
+                [disabled]="true"
+              >
+                <mat-option
+                  *ngFor="let prepaid of data.doctor._prepaid"
+                  [value]="prepaid"
+                >
+                  {{ prepaid }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
             <span matPrefix>+54 &nbsp;</span>
