@@ -1,14 +1,24 @@
-<h6>Solicitando un turno para el Dr: {{data.doctor.firstname + ' ' + data.doctor.lastname}}</h6>
-<mat-horizontal-stepper [linear]="isLinear" #stepper >
+<h6>
+  Solicitando un turno para el Dr:
+  {{ data.doctor.firstname + " " + data.doctor.lastname }}
+</h6>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Seleccione un turno</ng-template>
       <h5 class="title">Proximos turnos disponibles</h5>
       <div class="day" *ngIf="nextDay.availableHours">
-        <h6>{{nextDay.dateName}} {{nextDay.date}}</h6>
-        <div >
-          <button mat-button matStepperNext class="appointment btn btn-primary "
-             *ngFor="let hour of nextDay.availableHours" (click)="selectTurn( nextDay.date, hour)"> {{hour}} hs </button>
+        <h6>{{ nextDay.dateName }} {{ nextDay.date }}</h6>
+        <div>
+          <button
+            mat-button
+            matStepperNext
+            class="appointment btn btn-primary "
+            *ngFor="let hour of nextDay.availableHours"
+            (click)="selectTurn(nextDay.date, hour)"
+          >
+            {{ hour }} hs
+          </button>
         </div>
       </div>
       <div *ngIf="!nextDay.availableHours">
@@ -20,15 +30,32 @@
       <div>
         <h5 class="title">O seleccione una fecha</h5>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" [(ngModel)]="dateSelected"
-          (dateChange)="getAppointmentsOnDay()" [ngModelOptions]="{standalone: true}" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Seleccione una fecha"
+            [(ngModel)]="dateSelected"
+            (dateChange)="getAppointmentsOnDay()"
+            [ngModelOptions]="{ standalone: true }"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div >
-          <h6>{{selectedDay.dateName}} {{selectedDay.date}}</h6>
-          <button mat-button matStepperNext class="appointment btn btn-primary "
-          *ngFor="let hour of selectedDay.availableHours" (click)="selectTurn( selectedDay.date, hour)"> {{hour}} hs </button>
+        <div>
+          <h6>{{ selectedDay.dateName }} {{ selectedDay.date }}</h6>
+          <button
+            mat-button
+            matStepperNext
+            class="appointment btn btn-primary "
+            *ngFor="let hour of selectedDay.availableHours"
+            (click)="selectTurn(selectedDay.date, hour)"
+          >
+            {{ hour }} hs
+          </button>
         </div>
       </div>
       <div class="buttons">
@@ -44,57 +71,104 @@
         <div class="form-patient-data" >
           <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput  placeholder="Nombre" [(ngModel)]="newUser.name"  [ngModelOptions]="{ standalone: true }" >
+            <input
+              matInput
+              placeholder="Nombre"
+              [(ngModel)]="newUser.name"
+              [ngModelOptions]="{ standalone: true }"
+            />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Apellido</mat-label>
-            <input matInput  placeholder="Apellido" [(ngModel)]="newUser.lastName"  [ngModelOptions]="{ standalone: true }" >
+            <input
+              matInput
+              placeholder="Apellido"
+              [(ngModel)]="newUser.lastName"
+              [ngModelOptions]="{ standalone: true }"
+            />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Obra Social</mat-label>
-            <mat-select  [(ngModel)]="newUser.prepaid" [ngModelOptions]="{ standalone: true }">
-              <mat-option *ngFor="let prepaid of data.doctor._prepaid"  [value]="prepaid.name" >
-                {{prepaid.name}}
+            <mat-select
+              [(ngModel)]="newUser.prepaid"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <mat-option
+                *ngFor="let prepaid of data.doctor._prepaid"
+                [value]="prepaid.name"
+              >
+                {{ prepaid.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
             <span matPrefix>+54 &nbsp;</span>
-            <input type="text" matInput  placeholder="221-123-4567" [(ngModel)]="newUser.phone" [ngModelOptions]="{ standalone: true }">
+            <input
+              type="text"
+              matInput
+              placeholder="221-123-4567"
+              [(ngModel)]="newUser.phone"
+              [ngModelOptions]="{ standalone: true }"
+            />
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </div>
         <div class="form-patient-comment">
           <mat-form-field class="comment">
             <mat-label>Deja un comentario sobre el turno</mat-label>
-            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias" [(ngModel)]="turn.observation" [ngModelOptions]="{ standalone: true }"></textarea>
+            <textarea
+              matInput
+              placeholder="Por ejemplo: Sensibilidad en las encias"
+              [(ngModel)]="turn.observation"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
           </mat-form-field>
         </div>
         <div class="buttons">
           <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button matStepperNext >Siguiente</button>
+          <button mat-button matStepperNext>Siguiente</button>
         </div>
       </form>
     </div>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
+<<<<<<< HEAD
     <ng-template matStepLabel >Verifique los datos</ng-template>
     <div >
       <p class="dataVerification"> <a class="data"> Doctor: </a> {{data.doctor._firstname}} {{data.doctor._lastname}}</p>
       <p class="dataVerification"> <a class="data">Paciente: </a> {{newUser.name}} {{newUser.lastName}}   </p>
       <p class="dataVerification"> <a class="data">Turno: </a> {{turn.date}}  -  {{turn.hour}} hs </p>
 
+=======
+    <ng-template matStepLabel>Verifique los datos</ng-template>
+    <div>
+      <p class="dataVerification">
+        <a class="data"> Doctor: </a> {{ data.doctor._firstname }}
+        {{ data.doctor._lastname }}
+      </p>
+      <p class="dataVerification">
+        <a class="data">Paciente: </a> {{ newUser.name }} {{ newUser.lastName }}
+      </p>
+      <p class="dataVerification">
+        <a class="data">Turno: </a> {{ turn.date }} - {{ turn.hour }} hs
+      </p>
+>>>>>>> fc9c7537d79711a02cefd25cba0ef3080df902eb
     </div>
-    <form [formGroup]="thirdFormGroup" class="verfyDataButtons" *ngIf="!created">
-
-          <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button (click)="requetsAppointmentAndCreateUser()">Aprobar turno</button>
-
+    <form
+      [formGroup]="thirdFormGroup"
+      class="verfyDataButtons"
+      *ngIf="!created"
+    >
+      <button mat-button matStepperPrevious>Volver</button>
+      <button mat-button (click)="requetsAppointmentAndCreateUser()">
+        Aprobar turno
+      </button>
     </form>
-  <div *ngIf="created" >
-    <p class="success" >turno creado correctamente!!</p>
-  </div>
+    <div class="alert alert-success" role="alert" *ngIf="created">
+      <strong>Turno creado correctamente!! </strong>
+      <p><button mat-button (click)="home()">volver</button></p>
+    </div>
   </mat-step>
 </mat-horizontal-stepper>
 

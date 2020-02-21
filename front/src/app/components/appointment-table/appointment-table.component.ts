@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import { element } from '@angular/core/src/render3/instructions';
-import { AppointmentInfo } from '../../models/appointmentInfo';
+import { AppointmentInfo } from '../../Models/appointmentInfo';
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 import { Store } from '@ngrx/store';

@@ -24,6 +24,7 @@
     width: 100%;
     justify-content: space-around;
     padding-top:10%;
+    animation: fadein 0.5s;
   }
 
   .button-title {
@@ -90,3 +91,8 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+  }
